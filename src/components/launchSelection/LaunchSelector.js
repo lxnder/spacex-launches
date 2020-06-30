@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { GET_LAUNCHES } from "../../lib/queries";
 import { useQuery } from "@apollo/react-hooks";
 import classNames from "classnames";
@@ -6,8 +6,22 @@ import DynamicButton from "./DynamicButton";
 
 const LaunchSelector = () => {
   const [overlayIsActive, setOverlayActive] = useState(false);
+  const [launchesByDate, setLaunchesByDate] = useState([]);
 
   const { loading, error, data } = useQuery(GET_LAUNCHES);
+
+  // Duplicates list of launches ordered by date for performance reasons after data change
+  useEffect(() => {
+    if (!loading && !error) {
+      setLaunchesByDate(
+        [...data.launches].sort((a, b) => {
+          return parseInt(b.launch_date_unix) - parseInt(a.launch_date_unix);
+        })
+      );
+    } else {
+      setLaunchesByDate([]);
+    }
+  }, [data]);
 
   const onClick = e => {
     setOverlayActive(!overlayIsActive);

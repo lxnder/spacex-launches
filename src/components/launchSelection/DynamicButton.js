@@ -13,6 +13,14 @@ const DynamicButton = ({ onClick, onChange, overlayIsActive }) => {
     "focus:outline-none"
   );
 
+  const btnTextClasses = classNames(
+    "self-center",
+    "font-oxanium",
+    "font-light",
+    "text-2xl",
+    "none"
+  );
+
   const inputClasses = classNames(
     "bg-transparent",
     "flex",
@@ -22,35 +30,26 @@ const DynamicButton = ({ onClick, onChange, overlayIsActive }) => {
     "h-full",
     "px-4",
     "text-center",
-    "font-orbitron",
+    "font-oxanium",
     "ease-in-out",
     "text-red-500",
     "outline-none"
   );
 
   const dynamicDivClasses = classNames(
-    { "w-full": overlayIsActive },
-    { "h-16": overlayIsActive },
-    { "bg-gray-900": overlayIsActive },
-    { "bg-white": !overlayIsActive },
-    { "w-3/12": !overlayIsActive },
-    { "h-12": !overlayIsActive },
-    { "rounded-lg": !overlayIsActive },
+    { "w-full h-16 bg-gray-900 border-b-2 border-red-500": overlayIsActive },
+    { "w-3/12 h-12 bg-white rounded-lg": !overlayIsActive },
     "transition-all",
     "duration-1000",
     "ease-in-out",
-    "min-w-10",
-    { "border-b-2": overlayIsActive },
-    { "border-red-500": overlayIsActive }
+    "min-w-10"
   );
 
   return (
     <div className={dynamicDivClasses}>
       {!overlayIsActive ? (
         <button className={btnClasses} onClick={onClick}>
-          <p className="self-center font-orbitron text-lg none">
-            SELECT A LAUNCH
-          </p>
+          <p className={btnTextClasses}>SELECT A LAUNCH</p>
         </button>
       ) : (
         <input

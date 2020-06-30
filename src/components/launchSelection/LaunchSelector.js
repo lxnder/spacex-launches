@@ -6,12 +6,11 @@ import DynamicButton from "./DynamicButton";
 
 const LaunchSelector = () => {
   const [overlayIsActive, setOverlayActive] = useState(false);
-  const toggleOverlay = () => setOverlayActive(!overlayIsActive);
 
   const { loading, error, data } = useQuery(GET_LAUNCHES);
 
   const onClick = e => {
-    toggleOverlay();
+    setOverlayActive(!overlayIsActive);
   };
 
   const onChange = e => {};
@@ -22,7 +21,7 @@ const LaunchSelector = () => {
     "fixed",
     "top-0",
     "left-0",
-    " z-10",
+    "z-10",
     "flex",
     "flex-col"
   );

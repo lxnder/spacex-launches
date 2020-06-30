@@ -260,6 +260,7 @@ module.exports = {
         "monospace",
       ],
       orbitron: ["Orbitron", "sans-serif"],
+      oxanium: ["Oxanium", "sans-serif", "cursive"],
     },
     fontSize: {
       xs: "0.75rem",

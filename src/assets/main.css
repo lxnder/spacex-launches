@@ -6052,6 +6052,10 @@ video {
   font-family: Orbitron, sans-serif;
 }
 
+.font-oxanium {
+  font-family: Oxanium, sans-serif, cursive;
+}
+
 .font-hairline {
   font-weight: 100;
 }
@@ -14389,6 +14393,8 @@ video {
 
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600;700&display=swap");
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;
@@ -19834,6 +19840,10 @@ video {
 
   .sm\:font-orbitron {
     font-family: Orbitron, sans-serif;
+  }
+
+  .sm\:font-oxanium {
+    font-family: Oxanium, sans-serif, cursive;
   }
 
   .sm\:font-hairline {
@@ -33619,6 +33629,10 @@ video {
     font-family: Orbitron, sans-serif;
   }
 
+  .md\:font-oxanium {
+    font-family: Oxanium, sans-serif, cursive;
+  }
+
   .md\:font-hairline {
     font-weight: 100;
   }
@@ -47402,6 +47416,10 @@ video {
     font-family: Orbitron, sans-serif;
   }
 
+  .lg\:font-oxanium {
+    font-family: Oxanium, sans-serif, cursive;
+  }
+
   .lg\:font-hairline {
     font-weight: 100;
   }
@@ -61183,6 +61201,10 @@ video {
 
   .xl\:font-orbitron {
     font-family: Orbitron, sans-serif;
+  }
+
+  .xl\:font-oxanium {
+    font-family: Oxanium, sans-serif, cursive;
   }
 
   .xl\:font-hairline {

@@ -6048,6 +6048,10 @@ video {
   font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+.font-orbitron {
+  font-family: Orbitron, sans-serif;
+}
+
 .font-hairline {
   font-weight: 100;
 }
@@ -7586,6 +7590,46 @@ video {
 
 .min-w-0 {
   min-width: 0;
+}
+
+.min-w-1 {
+  min-width: 0.25rem;
+}
+
+.min-w-2 {
+  min-width: 0.5rem;
+}
+
+.min-w-3 {
+  min-width: 0.75rem;
+}
+
+.min-w-4 {
+  min-width: 1rem;
+}
+
+.min-w-5 {
+  min-width: 1.25rem;
+}
+
+.min-w-6 {
+  min-width: 1.5rem;
+}
+
+.min-w-7 {
+  min-width: 1.75rem;
+}
+
+.min-w-8 {
+  min-width: 2rem;
+}
+
+.min-w-9 {
+  min-width: 2.25rem;
+}
+
+.min-w-10 {
+  min-width: 10rem;
 }
 
 .min-w-full {
@@ -14343,6 +14387,8 @@ video {
   transition-delay: 1000ms;
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap");
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;
@@ -19786,6 +19832,10 @@ video {
     font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
+  .sm\:font-orbitron {
+    font-family: Orbitron, sans-serif;
+  }
+
   .sm\:font-hairline {
     font-weight: 100;
   }
@@ -21324,6 +21374,46 @@ video {
 
   .sm\:min-w-0 {
     min-width: 0;
+  }
+
+  .sm\:min-w-1 {
+    min-width: 0.25rem;
+  }
+
+  .sm\:min-w-2 {
+    min-width: 0.5rem;
+  }
+
+  .sm\:min-w-3 {
+    min-width: 0.75rem;
+  }
+
+  .sm\:min-w-4 {
+    min-width: 1rem;
+  }
+
+  .sm\:min-w-5 {
+    min-width: 1.25rem;
+  }
+
+  .sm\:min-w-6 {
+    min-width: 1.5rem;
+  }
+
+  .sm\:min-w-7 {
+    min-width: 1.75rem;
+  }
+
+  .sm\:min-w-8 {
+    min-width: 2rem;
+  }
+
+  .sm\:min-w-9 {
+    min-width: 2.25rem;
+  }
+
+  .sm\:min-w-10 {
+    min-width: 10rem;
   }
 
   .sm\:min-w-full {
@@ -33525,6 +33615,10 @@ video {
     font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
+  .md\:font-orbitron {
+    font-family: Orbitron, sans-serif;
+  }
+
   .md\:font-hairline {
     font-weight: 100;
   }
@@ -35063,6 +35157,46 @@ video {
 
   .md\:min-w-0 {
     min-width: 0;
+  }
+
+  .md\:min-w-1 {
+    min-width: 0.25rem;
+  }
+
+  .md\:min-w-2 {
+    min-width: 0.5rem;
+  }
+
+  .md\:min-w-3 {
+    min-width: 0.75rem;
+  }
+
+  .md\:min-w-4 {
+    min-width: 1rem;
+  }
+
+  .md\:min-w-5 {
+    min-width: 1.25rem;
+  }
+
+  .md\:min-w-6 {
+    min-width: 1.5rem;
+  }
+
+  .md\:min-w-7 {
+    min-width: 1.75rem;
+  }
+
+  .md\:min-w-8 {
+    min-width: 2rem;
+  }
+
+  .md\:min-w-9 {
+    min-width: 2.25rem;
+  }
+
+  .md\:min-w-10 {
+    min-width: 10rem;
   }
 
   .md\:min-w-full {
@@ -47264,6 +47398,10 @@ video {
     font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
+  .lg\:font-orbitron {
+    font-family: Orbitron, sans-serif;
+  }
+
   .lg\:font-hairline {
     font-weight: 100;
   }
@@ -48802,6 +48940,46 @@ video {
 
   .lg\:min-w-0 {
     min-width: 0;
+  }
+
+  .lg\:min-w-1 {
+    min-width: 0.25rem;
+  }
+
+  .lg\:min-w-2 {
+    min-width: 0.5rem;
+  }
+
+  .lg\:min-w-3 {
+    min-width: 0.75rem;
+  }
+
+  .lg\:min-w-4 {
+    min-width: 1rem;
+  }
+
+  .lg\:min-w-5 {
+    min-width: 1.25rem;
+  }
+
+  .lg\:min-w-6 {
+    min-width: 1.5rem;
+  }
+
+  .lg\:min-w-7 {
+    min-width: 1.75rem;
+  }
+
+  .lg\:min-w-8 {
+    min-width: 2rem;
+  }
+
+  .lg\:min-w-9 {
+    min-width: 2.25rem;
+  }
+
+  .lg\:min-w-10 {
+    min-width: 10rem;
   }
 
   .lg\:min-w-full {
@@ -61003,6 +61181,10 @@ video {
     font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
+  .xl\:font-orbitron {
+    font-family: Orbitron, sans-serif;
+  }
+
   .xl\:font-hairline {
     font-weight: 100;
   }
@@ -62541,6 +62723,46 @@ video {
 
   .xl\:min-w-0 {
     min-width: 0;
+  }
+
+  .xl\:min-w-1 {
+    min-width: 0.25rem;
+  }
+
+  .xl\:min-w-2 {
+    min-width: 0.5rem;
+  }
+
+  .xl\:min-w-3 {
+    min-width: 0.75rem;
+  }
+
+  .xl\:min-w-4 {
+    min-width: 1rem;
+  }
+
+  .xl\:min-w-5 {
+    min-width: 1.25rem;
+  }
+
+  .xl\:min-w-6 {
+    min-width: 1.5rem;
+  }
+
+  .xl\:min-w-7 {
+    min-width: 1.75rem;
+  }
+
+  .xl\:min-w-8 {
+    min-width: 2rem;
+  }
+
+  .xl\:min-w-9 {
+    min-width: 2.25rem;
+  }
+
+  .xl\:min-w-10 {
+    min-width: 10rem;
   }
 
   .xl\:min-w-full {

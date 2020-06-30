@@ -1,6 +1,7 @@
 import React from "react";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
+import LaunchSelector from "./components/launchSelection/LaunchSelector";
 
 const App = () => {
   const client = new ApolloClient({
@@ -9,7 +10,7 @@ const App = () => {
 
   return (
     <ApolloProvider client={client}>
-      <div></div>
+      <LaunchSelector />
     </ApolloProvider>
   );
 };

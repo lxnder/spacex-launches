@@ -9,32 +9,39 @@ const DynamicButton = ({ onClick, onChange, overlayIsActive }) => {
     "justify-center",
     "w-full",
     "h-full",
-    "bg-gray-200",
-    "px-4"
+    "px-4",
+    "focus:outline-none"
   );
 
   const inputClasses = classNames(
+    "bg-transparent",
     "flex",
     "flex-col",
     "justify-center",
     "w-full",
     "h-full",
-    "bg-gray-200",
     "px-4",
     "text-center",
-    "font-orbitron"
+    "font-orbitron",
+    "ease-in-out",
+    "text-red-500",
+    "outline-none"
   );
 
   const dynamicDivClasses = classNames(
-    { "w-3/12": !overlayIsActive },
     { "w-full": overlayIsActive },
-    { "h-12": !overlayIsActive },
     { "h-16": overlayIsActive },
-    "bg-white",
+    { "bg-gray-900": overlayIsActive },
+    { "bg-white": !overlayIsActive },
+    { "w-3/12": !overlayIsActive },
+    { "h-12": !overlayIsActive },
+    { "rounded-lg": !overlayIsActive },
     "transition-all",
     "duration-1000",
     "ease-in-out",
-    "min-w-10"
+    "min-w-10",
+    { "border-b-2": overlayIsActive },
+    { "border-red-500": overlayIsActive }
   );
 
   return (
@@ -48,7 +55,7 @@ const DynamicButton = ({ onClick, onChange, overlayIsActive }) => {
       ) : (
         <input
           type="text"
-          placeholder="Search a launch ..."
+          placeholder="Type here to filter launches..."
           className={inputClasses}
           onChange={onChange}
         />

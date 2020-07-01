@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 
-const DynamicButton = ({ onClick, onChange, overlayIsActive }) => {
+const DynamicButton = ({ onClick, updateNameFilter, overlayIsActive }) => {
+  const [inputText, setInputText] = useState("");
+
+  const setText = e => {
+    updateNameFilter(e);
+    setInputText(e.target.value);
+    console.log(e.target.value);
+  };
+
   const btnClasses = classNames(
     "flex",
     "flex-col",
@@ -57,7 +65,8 @@ const DynamicButton = ({ onClick, onChange, overlayIsActive }) => {
           type="text"
           placeholder="Type here to filter launches..."
           className={inputClasses}
-          onChange={onChange}
+          onChange={setText}
+          value={inputText}
         />
       )}
     </div>
@@ -66,7 +75,7 @@ const DynamicButton = ({ onClick, onChange, overlayIsActive }) => {
 
 DynamicButton.propTypes = {
   onClick: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
+  updateNameFilter: PropTypes.func.isRequired,
   overlayIsActive: PropTypes.bool.isRequired,
 };
 

@@ -33,7 +33,8 @@ const DynamicButton = ({ onClick, onChange, overlayIsActive }) => {
     "font-oxanium",
     "ease-in-out",
     "text-red-500",
-    "outline-none"
+    "outline-none",
+    "select-none"
   );
 
   const dynamicDivClasses = classNames(

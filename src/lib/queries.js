@@ -54,6 +54,9 @@ export const GET_LAUNCHES = gql`
       launch_success
       mission_name
       upcoming
+      links {
+        mission_patch_small
+      }
     }
   }
 `;

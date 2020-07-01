@@ -49,6 +49,7 @@ const Overlay = ({
     "overflow-y-auto"
   );
 
+  // TODO: check if upcoming + remaining time
   // TODO: Regex filtering
   // TODO: Sort by name and date buttons
   // TODO: Abstract launch card component
@@ -56,7 +57,7 @@ const Overlay = ({
     <div className={mainDivClasses} onClick={disableOverlay}>
       <div className={containerClasses}>
         {data &&
-          data.launches.map(launch => (
+          launchesByDate.map(launch => (
             <div
               className="col-span-1 bg-gray-100 p-2 grid grid-cols-4"
               key={launch.id}

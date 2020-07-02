@@ -17,6 +17,32 @@ module.exports = {
 
       black: "#000",
       white: "#fff",
+      clear: {
+        10: "rgba(255, 255, 255, 0.10)",
+        15: "rgba(255, 255, 255, 0.15)",
+        20: "rgba(255, 255, 255, 0.20)",
+        25: "rgba(255, 255, 255, 0.25)",
+        30: "rgba(255, 255, 255, 0.30)",
+        35: "rgba(255, 255, 255, 0.35)",
+        40: "rgba(255, 255, 255, 0.40)",
+        45: "rgba(255, 255, 255, 0.45)",
+        50: "rgba(255, 255, 255, 0.50)",
+        55: "rgba(255, 255, 255, 0.55)",
+        60: "rgba(255, 255, 255, 0.6)",
+      },
+      subtle: {
+        10: "rgba(0, 0, 0, 0.10)",
+        15: "rgba(0, 0, 0, 0.15)",
+        20: "rgba(0, 0, 0, 0.20)",
+        25: "rgba(0, 0, 0, 0.25)",
+        30: "rgba(0, 0, 0, 0.30)",
+        35: "rgba(0, 0, 0, 0.35)",
+        40: "rgba(0, 0, 0, 0.40)",
+        45: "rgba(0, 0, 0, 0.45)",
+        50: "rgba(0, 0, 0, 0.50)",
+        55: "rgba(0, 0, 0, 0.55)",
+        60: "rgba(0, 0, 0, 0.60)",
+      },
 
       gray: {
         100: "#f7fafc",
@@ -261,6 +287,9 @@ module.exports = {
       ],
       orbitron: ["Orbitron", "sans-serif"],
       oxanium: ["Oxanium", "sans-serif", "cursive"],
+      raleway: ["Raleway", "sans-serif", "cursive"],
+      kanit: ["Kanit", "sans-serif", "cursive"],
+      questrial: ["Questrial", "sans-serif", "cursive"],
     },
     fontSize: {
       xs: "0.75rem",

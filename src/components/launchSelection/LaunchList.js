@@ -66,7 +66,8 @@ const LaunchList = ({
   const gridWrapperClasses = classNames(
     "grid",
     "grid-cols-2",
-    "gap-4",
+    // "gap-4",
+    "col-gap-4",
     "h-auto"
   );
 

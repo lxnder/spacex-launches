@@ -17,9 +17,11 @@ const LaunchCard = ({ launch }) => {
   };
 
   return (
-    <div className="grid h-32 grid-cols-12 col-span-1 p-2 bg-gray-100">
-      <div className="col-span-7">
-        <p>{launch.mission_name}</p>
+    <div className="grid h-32 grid-cols-12 col-span-1 p-2 hover:shadow-xl hover:border-transparent cursor-pointer font-questrial transition-all duration-150 border-b border-subtle-10 hover:bg-clear-40">
+      <div className="col-span-7 flex flex-col justify-center items-center">
+        <p className="font-bold text-blue-900 text-lg text-center">
+          {launch.mission_name}
+        </p>
         <p>{formatLaunchDate(launch.launch_date_unix)}</p>
         {launch.upcoming ? (
           <p>{formatRemainingTime(launch.launch_date_unix)}</p>

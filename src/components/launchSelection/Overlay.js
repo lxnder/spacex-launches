@@ -7,7 +7,7 @@ import DynamicButtonFilter from "./DynamicButtonFilter";
 import LaunchList from "./LaunchList";
 
 const Overlay = () => {
-  const [overlayIsActive, setOverlayIsActive] = useState(false);
+  const [overlayIsActive, setOverlayIsActive] = useState(true);
   const [launchNameFilter, setLaunchNameFilter] = useState("");
 
   const { loading, error, data } = useQuery(GET_LAUNCHES);

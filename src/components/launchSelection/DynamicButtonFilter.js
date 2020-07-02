@@ -27,7 +27,7 @@ const DynamicButtonFilter = ({
 
   const btnTextClasses = classNames(
     "self-center",
-    "font-oxanium",
+    "font-questrial",
     "font-light",
     "text-2xl",
     "text-gray-700",
@@ -43,9 +43,10 @@ const DynamicButtonFilter = ({
     "h-full",
     "px-4",
     "text-center",
-    "font-oxanium",
+    "font-questrial",
     "text-red-500",
     "outline-none",
+    "text-lg",
     "select-none",
     { "border-b border-red-500": overlayIsActive }
   );
@@ -69,10 +70,11 @@ const DynamicButtonFilter = ({
       ) : (
         <input
           type="text"
-          placeholder="Type here to filter launches..."
+          placeholder="Type here to filter missions..."
           className={inputClasses}
           onChange={setText}
           value={inputText}
+          spellCheck="false"
         />
       )}
     </div>

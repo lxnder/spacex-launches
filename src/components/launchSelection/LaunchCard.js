@@ -17,8 +17,8 @@ const LaunchCard = ({ launch }) => {
   };
 
   return (
-    <div className="grid h-32 grid-cols-4 col-span-1 p-2 bg-gray-100">
-      <div className="col-span-3">
+    <div className="grid h-32 grid-cols-12 col-span-1 p-2 bg-gray-100">
+      <div className="col-span-7">
         <p>{launch.mission_name}</p>
         <p>{formatLaunchDate(launch.launch_date_unix)}</p>
         {launch.upcoming ? (
@@ -27,9 +27,15 @@ const LaunchCard = ({ launch }) => {
           <p>Status: {launch.launch_success ? "Success" : "Failure"}</p>
         )}
       </div>
-      <div className="col-span-1">
-        {launch.links.mission_patch_small !== null && (
-          <img src={launch.links.mission_patch_small} alt=""></img>
+      <div className="flex items-center justify-center col-span-5">
+        {launch.links.mission_patch_small !== null ? (
+          <img
+            src={launch.links.mission_patch_small}
+            alt=""
+            className="h-24"
+          ></img>
+        ) : (
+          <img src="assets/no_patch_red.png" alt="" className="h-24"></img>
         )}
       </div>
     </div>

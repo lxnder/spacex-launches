@@ -2,6 +2,21 @@
 
 @tailwind components;
 
+/* width */
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(136, 136, 136, 0);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #f56565;
+}
+
 @tailwind utilities;
 
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap");

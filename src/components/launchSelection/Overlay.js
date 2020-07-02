@@ -7,7 +7,7 @@ import DynamicButtonFilter from "./DynamicButtonFilter";
 import LaunchList from "./LaunchList";
 
 const Overlay = () => {
-  const [overlayIsActive, setOverlayIsActive] = useState(true);
+  const [overlayIsActive, setOverlayIsActive] = useState(false);
   const [launchNameFilter, setLaunchNameFilter] = useState("");
 
   const { loading, error, data } = useQuery(GET_LAUNCHES);
@@ -37,8 +37,7 @@ const Overlay = () => {
     "items-center",
     "content-center",
     "w-screen",
-    "h-16",
-    "bg-gray-800"
+    "h-16"
   );
 
   return (

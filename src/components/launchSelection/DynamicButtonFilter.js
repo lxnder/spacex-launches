@@ -21,7 +21,8 @@ const DynamicButtonFilter = ({
     "w-full",
     "h-full",
     "px-4",
-    "focus:outline-none"
+    "focus:outline-none",
+    "hover:border-none"
   );
 
   const btnTextClasses = classNames(
@@ -29,6 +30,7 @@ const DynamicButtonFilter = ({
     "font-oxanium",
     "font-light",
     "text-2xl",
+    "text-gray-700",
     "none"
   );
 
@@ -42,26 +44,27 @@ const DynamicButtonFilter = ({
     "px-4",
     "text-center",
     "font-oxanium",
-    "ease-in-out",
     "text-red-500",
     "outline-none",
-    "select-none"
+    "select-none",
+    { "border-b border-red-500": overlayIsActive }
   );
 
   const dynamicDivClasses = classNames(
-    { "w-full h-16 bg-gray-900 border-b-2 border-red-500": overlayIsActive },
-    { "w-3/12 h-12 bg-white rounded-lg": !overlayIsActive },
+    { "w-full h-16": overlayIsActive },
+    { "w-3/12 h-16 border-b border-t border-gray-700": !overlayIsActive },
     "transition-all",
     "duration-1000",
     "ease-in-out",
-    "min-w-10"
+    "min-w-10",
+    "mt-10"
   );
 
   return (
     <div className={dynamicDivClasses}>
       {!overlayIsActive ? (
         <button className={btnClasses} onClick={onClick}>
-          <p className={btnTextClasses}>SELECT A LAUNCH</p>
+          <p className={btnTextClasses}>SELECT LAUNCH</p>
         </button>
       ) : (
         <input

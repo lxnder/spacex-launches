@@ -41,7 +41,6 @@ const LaunchList = ({
   }, [data, loading, error]);
 
   const mainDivClasses = classNames(
-    "bg-gray-500",
     "w-full",
     "h-full",
     "px-20",
@@ -56,11 +55,12 @@ const LaunchList = ({
 
   const containerClasses = classNames(
     "container",
+    "mx-auto",
     "max-h-80",
     "h-full",
-    "bg-gray-300",
     "p-4",
-    "overflow-y-auto"
+    "overflow-y-auto",
+    "shadow-2xl"
   );
 
   const gridWrapperClasses = classNames(
@@ -71,12 +71,13 @@ const LaunchList = ({
   );
 
   const filterSelectionClasses = classNames(
+    "container",
+    "mx-auto",
     "flex",
     "justify-center",
     "w-full",
     "h-10",
     "px-4",
-    "bg-red-400",
     "space-x-4"
   );
 
@@ -85,8 +86,7 @@ const LaunchList = ({
     "items-center",
     "justify-center",
     "w-64",
-    "h-full",
-    "bg-blue-700"
+    "h-full"
   );
 
   // TODO: Loading and error status

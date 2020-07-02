@@ -1,132 +1,64 @@
-import React, { useState, useEffect, useRef } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from "react";
+import { GET_LAUNCHES } from "../../lib/queries";
+import { useQuery } from "@apollo/react-hooks";
 import classNames from "classnames";
-import LaunchCard from "./LaunchCard";
+import DynamicButtonFilter from "./DynamicButtonFilter";
 
-const Overlay = ({
-  launchesData: { data, loading, error },
-  disableOverlay,
-  launchNameFilter,
-}) => {
-  const [launchesByDate, setLaunchesByDate] = useState([]);
-  const [selectedFilter, setSelectedFilter] = useState("name");
+import LaunchList from "./LaunchList";
 
-  const launchPassesFilter = name => {
-    if (launchNameFilter === "") {
-      return true;
-    } else {
-      return name.toLowerCase().match(launchNameFilter.toLowerCase()) !== null;
+const Overlay = () => {
+  const [overlayIsActive, setOverlayIsActive] = useState(true);
+  const [launchNameFilter, setLaunchNameFilter] = useState("");
+
+  const { loading, error, data } = useQuery(GET_LAUNCHES);
+
+  const disableOverlay = e => {
+    if (e.target === e.currentTarget) {
+      setOverlayIsActive(false);
     }
   };
-
-  const getSelectedLaunches = () => {
-    switch (selectedFilter) {
-      case "name":
-        return data.launches;
-      case "date":
-        return launchesByDate;
-    }
-  };
-
-  // Duplicates list of launches ordered by date for performance reasons after data change
-  useEffect(() => {
-    if (!loading && !error) {
-      setLaunchesByDate(
-        [...data.launches].sort((a, b) => {
-          return parseInt(b.launch_date_unix) - parseInt(a.launch_date_unix);
-        })
-      );
-    } else {
-      setLaunchesByDate([]);
-    }
-  }, [data, loading, error]);
 
   const mainDivClasses = classNames(
-    "bg-gray-500",
-    "w-full",
-    "h-full",
-    "px-20",
-    "transition-all",
-    "ease-in",
-    "duration-500",
+    "h-screen",
+    "w-screen",
+    "fixed",
+    "top-0",
+    "left-0",
+    "z-10",
+    "flex",
+    "flex-col"
+  );
+
+  const topBarClasses = classNames(
+    "z-30",
     "flex",
     "flex-col",
-    "justify-center"
-  );
-
-  const containerClasses = classNames(
-    "container",
-    "max-h-80",
-    "h-full",
-    "bg-gray-300",
-    "p-4",
-    "overflow-y-auto"
-  );
-
-  const gridWrapperClasses = classNames(
-    "grid",
-    "grid-cols-2",
-    "gap-4",
-    "h-auto"
-  );
-
-  const filterSelectionClasses = classNames(
-    "flex",
     "justify-center",
-    "w-full",
-    "h-10",
-    "px-4",
-    "bg-red-400",
-    "space-x-4"
-  );
-
-  const buttonClasses = classNames(
-    "flex",
     "items-center",
-    "justify-center",
-    "w-64",
-    "h-full",
-    "bg-blue-700"
+    "content-center",
+    "w-screen",
+    "h-16",
+    "bg-gray-800"
   );
 
-  // TODO: Sort by name and date buttons
-  // TODO: Abstract launch card component
   return (
-    <div className={mainDivClasses} onClick={disableOverlay}>
-      <div className={filterSelectionClasses}>
-        <div
-          className={buttonClasses}
-          onClick={() => setSelectedFilter("name")}
-        >
-          Name
-        </div>
-        <div
-          className={buttonClasses}
-          onClick={() => setSelectedFilter("date")}
-        >
-          Date
-        </div>
+    <div className={mainDivClasses}>
+      <div className={topBarClasses}>
+        <DynamicButtonFilter
+          onClick={() => setOverlayIsActive(true)}
+          updateNameFilter={e => setLaunchNameFilter(e.target.value)}
+          overlayIsActive={overlayIsActive}
+        />
       </div>
-      <div className={containerClasses}>
-        <div className={gridWrapperClasses}>
-          {data &&
-            getSelectedLaunches().map(launch => (
-              <React.Fragment key={launch.id}>
-                {launchPassesFilter(launch.mission_name) && (
-                  <LaunchCard launch={launch} />
-                )}
-              </React.Fragment>
-            ))}
-        </div>
-      </div>
+      {overlayIsActive && (
+        <LaunchList
+          launchesData={{ data, loading, error }}
+          disableOverlay={disableOverlay}
+          launchNameFilter={launchNameFilter}
+        />
+      )}
     </div>
   );
-};
-
-Overlay.propTypes = {
-  launchesData: PropTypes.object.isRequired,
-  disableOverlay: PropTypes.func.isRequired,
-  launchNameFilter: PropTypes.string,
 };
 
 export default Overlay;

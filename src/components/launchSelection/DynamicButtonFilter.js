@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 
-const DynamicButton = ({ onClick, updateNameFilter, overlayIsActive }) => {
+const DynamicButtonFilter = ({
+  onClick,
+  updateNameFilter,
+  overlayIsActive,
+}) => {
   const [inputText, setInputText] = useState("");
 
   const setText = e => {
@@ -72,10 +76,10 @@ const DynamicButton = ({ onClick, updateNameFilter, overlayIsActive }) => {
   );
 };
 
-DynamicButton.propTypes = {
+DynamicButtonFilter.propTypes = {
   onClick: PropTypes.func.isRequired,
   updateNameFilter: PropTypes.func.isRequired,
   overlayIsActive: PropTypes.bool.isRequired,
 };
 
-export default DynamicButton;
+export default DynamicButtonFilter;

@@ -1,7 +1,7 @@
 import React from "react";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
-import LaunchSelector from "./components/launchSelection/LaunchSelector";
+import Overlay from "./components/launchSelection/Overlay";
 
 const App = () => {
   const client = new ApolloClient({
@@ -10,7 +10,7 @@ const App = () => {
 
   return (
     <ApolloProvider client={client}>
-      <LaunchSelector />
+      <Overlay />
     </ApolloProvider>
   );
 };

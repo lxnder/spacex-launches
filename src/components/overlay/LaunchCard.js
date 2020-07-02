@@ -16,18 +16,28 @@ const LaunchCard = ({ launch }) => {
     }
   };
 
+  // TODO: Clear up styles + colored status
+  // TODO: Add onClick action + global store
+  // TODO: Lazy load images
   return (
     <div className="grid h-32 grid-cols-12 col-span-1 p-2 hover:shadow-xl hover:border-transparent cursor-pointer font-questrial transition-all duration-150 border-b border-subtle-10 hover:bg-clear-40">
       <div className="col-span-7 flex flex-col justify-center items-center">
         <p className="font-bold text-blue-900 text-lg text-center">
           {launch.mission_name}
         </p>
-        <p>{formatLaunchDate(launch.launch_date_unix)}</p>
+
         {launch.upcoming ? (
-          <p>{formatRemainingTime(launch.launch_date_unix)}</p>
+          <p className="text-gray-800 text-sm">
+            {formatRemainingTime(launch.launch_date_unix)}
+          </p>
         ) : (
-          <p>Status: {launch.launch_success ? "Success" : "Failure"}</p>
+          <p className="text-sm text-gray-800">
+            Status: {launch.launch_success ? "SUCCESS" : "FAILURE"}
+          </p>
         )}
+        <p className="text-gray-600">
+          {formatLaunchDate(launch.launch_date_unix)}
+        </p>
       </div>
       <div className="flex items-center justify-center col-span-5">
         {launch.links.mission_patch_small !== null ? (

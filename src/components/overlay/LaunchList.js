@@ -50,9 +50,10 @@ const LaunchList = ({
     "flex",
     "flex-col",
     "justify-center",
-    "space-y-2"
+    "space-y-4"
   );
 
+  // TODO: Fix container sizing
   const containerClasses = classNames(
     "container",
     "mx-auto",
@@ -66,7 +67,6 @@ const LaunchList = ({
   const gridWrapperClasses = classNames(
     "grid",
     "grid-cols-2",
-    // "gap-4",
     "col-gap-4",
     "h-auto"
   );
@@ -78,33 +78,45 @@ const LaunchList = ({
     "justify-center",
     "w-full",
     "h-10",
-    "px-4",
-    "space-x-4"
+    "px-4"
   );
 
-  const buttonClasses = classNames(
-    "flex",
-    "items-center",
-    "justify-center",
-    "w-64",
-    "h-full"
-  );
+  // TODO: Style filter buttons
+  const buttonClasses = name =>
+    classNames(
+      "flex",
+      "items-center",
+      "justify-center",
+      "w-64",
+      "h-full",
+      "cursor-pointer",
+      "transition-all",
+      "duration-200",
+      "ease-in-out",
+      "font-questrial",
+      {
+        "shadow-inner bg-subtle-5 font-bold text-blue-900":
+          selectedFilter === name,
+        "shadow-xl bg-clear-10 border border-subtle-5 text-gray-800 hover:bg-clear-50":
+          selectedFilter !== name,
+      }
+    );
 
   // TODO: Loading and error status
   return (
     <div className={mainDivClasses} onClick={disableOverlay}>
       <div className={filterSelectionClasses}>
         <div
-          className={buttonClasses}
+          className={buttonClasses("name")}
           onClick={() => setSelectedFilter("name")}
         >
-          Name
+          NAME
         </div>
         <div
-          className={buttonClasses}
+          className={buttonClasses("date")}
           onClick={() => setSelectedFilter("date")}
         >
-          Date
+          DATE
         </div>
       </div>
       <div className={containerClasses}>

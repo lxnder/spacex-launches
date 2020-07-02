@@ -8,7 +8,6 @@ const DynamicButton = ({ onClick, updateNameFilter, overlayIsActive }) => {
   const setText = e => {
     updateNameFilter(e);
     setInputText(e.target.value);
-    console.log(e.target.value);
   };
 
   const btnClasses = classNames(

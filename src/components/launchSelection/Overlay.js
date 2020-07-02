@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import moment from "moment";
@@ -9,6 +9,28 @@ const Overlay = ({
   launchNameFilter,
 }) => {
   const [launchesByDate, setLaunchesByDate] = useState([]);
+  const [selectedFilter, setSelectedFilter] = useState("name");
+
+  const formatLaunchDate = launchTimeUnix => {
+    return moment.unix(launchTimeUnix).format("MMMM Do YYYY");
+  };
+
+  const formatRemainingTime = launchTimeUnix => {
+    let now = moment().unix();
+    if (now > launchTimeUnix) {
+      return "Launched " + moment.unix(launchTimeUnix).fromNow();
+    } else {
+      return "Launching " + moment.unix(launchTimeUnix).fromNow();
+    }
+  };
+
+  const launchPassesFilter = name => {
+    if (launchNameFilter === "") {
+      return true;
+    } else {
+      return name.toLowerCase().match(launchNameFilter.toLowerCase()) !== null;
+    }
+  };
 
   // Duplicates list of launches ordered by date for performance reasons after data change
   useEffect(() => {
@@ -33,8 +55,7 @@ const Overlay = ({
     "duration-500",
     "flex",
     "flex-col",
-    "justify-center",
-    "items-center"
+    "justify-center"
   );
 
   const containerClasses = classNames(
@@ -42,40 +63,76 @@ const Overlay = ({
     "max-h-80",
     "h-full",
     "bg-gray-300",
-    "grid",
-    "grid-cols-2",
-    "gap-4",
     "p-4",
     "overflow-y-auto"
   );
 
-  // TODO: check if upcoming + remaining time
-  // TODO: Regex filtering
+  const gridWrapperClasses = classNames(
+    "grid",
+    "grid-cols-2",
+    "gap-4",
+    "h-auto"
+  );
+
+  const filterSelectionClasses = classNames(
+    "flex",
+    "justify-center",
+    "w-full",
+    "h-10",
+    "px-4",
+    "bg-red-400",
+    "space-x-4"
+  );
+
+  const buttonClasses = classNames(
+    "flex",
+    "items-center",
+    "justify-center",
+    "w-64",
+    "h-full",
+    "bg-blue-700"
+  );
+
   // TODO: Sort by name and date buttons
   // TODO: Abstract launch card component
   return (
     <div className={mainDivClasses} onClick={disableOverlay}>
+      <div className={filterSelectionClasses}>
+        <div className={buttonClasses}>Name</div>
+        <div className={buttonClasses}>Date</div>
+      </div>
       <div className={containerClasses}>
-        {data &&
-          launchesByDate.map(launch => (
-            <div
-              className="col-span-1 bg-gray-100 p-2 grid grid-cols-4"
-              key={launch.id}
-            >
-              <div className="col-span-3">
-                <p>{launch.mission_name}</p>
-                <p>
-                  {moment.unix(launch.launch_date_unix).format("MMMM Do YYYY")}
-                </p>
-                <p>Status: {launch.launch_success ? "Success" : "Failure"}</p>
-              </div>
-              <div className="col-span-1">
-                {launch.links.mission_patch_small !== null && (
-                  <img src={launch.links.mission_patch_small} alt=""></img>
+        <div className={gridWrapperClasses}>
+          {data &&
+            launchesByDate.map(launch => (
+              <React.Fragment key={launch.id}>
+                {launchPassesFilter(launch.mission_name) && (
+                  <div className="grid h-32 grid-cols-4 col-span-1 p-2 bg-gray-100">
+                    <div className="col-span-3">
+                      <p>{launch.mission_name}</p>
+                      <p>{formatLaunchDate(launch.launch_date_unix)}</p>
+                      {launch.upcoming ? (
+                        <p>{formatRemainingTime(launch.launch_date_unix)}</p>
+                      ) : (
+                        <p>
+                          Status:{" "}
+                          {launch.launch_success ? "Success" : "Failure"}
+                        </p>
+                      )}
+                    </div>
+                    <div className="col-span-1">
+                      {launch.links.mission_patch_small !== null && (
+                        <img
+                          src={launch.links.mission_patch_small}
+                          alt=""
+                        ></img>
+                      )}
+                    </div>
+                  </div>
                 )}
-              </div>
-            </div>
-          ))}
+              </React.Fragment>
+            ))}
+        </div>
       </div>
     </div>
   );

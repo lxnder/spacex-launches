@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import moment from "moment";
+import LaunchCard from "./LaunchCard";
 
 const Overlay = ({
   launchesData: { data, loading, error },
@@ -11,24 +11,20 @@ const Overlay = ({
   const [launchesByDate, setLaunchesByDate] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState("name");
 
-  const formatLaunchDate = launchTimeUnix => {
-    return moment.unix(launchTimeUnix).format("MMMM Do YYYY");
-  };
-
-  const formatRemainingTime = launchTimeUnix => {
-    let now = moment().unix();
-    if (now > launchTimeUnix) {
-      return "Launched " + moment.unix(launchTimeUnix).fromNow();
-    } else {
-      return "Launching " + moment.unix(launchTimeUnix).fromNow();
-    }
-  };
-
   const launchPassesFilter = name => {
     if (launchNameFilter === "") {
       return true;
     } else {
       return name.toLowerCase().match(launchNameFilter.toLowerCase()) !== null;
+    }
+  };
+
+  const getSelectedLaunches = () => {
+    switch (selectedFilter) {
+      case "name":
+        return data.launches;
+      case "date":
+        return launchesByDate;
     }
   };
 
@@ -98,37 +94,26 @@ const Overlay = ({
   return (
     <div className={mainDivClasses} onClick={disableOverlay}>
       <div className={filterSelectionClasses}>
-        <div className={buttonClasses}>Name</div>
-        <div className={buttonClasses}>Date</div>
+        <div
+          className={buttonClasses}
+          onClick={() => setSelectedFilter("name")}
+        >
+          Name
+        </div>
+        <div
+          className={buttonClasses}
+          onClick={() => setSelectedFilter("date")}
+        >
+          Date
+        </div>
       </div>
       <div className={containerClasses}>
         <div className={gridWrapperClasses}>
           {data &&
-            launchesByDate.map(launch => (
+            getSelectedLaunches().map(launch => (
               <React.Fragment key={launch.id}>
                 {launchPassesFilter(launch.mission_name) && (
-                  <div className="grid h-32 grid-cols-4 col-span-1 p-2 bg-gray-100">
-                    <div className="col-span-3">
-                      <p>{launch.mission_name}</p>
-                      <p>{formatLaunchDate(launch.launch_date_unix)}</p>
-                      {launch.upcoming ? (
-                        <p>{formatRemainingTime(launch.launch_date_unix)}</p>
-                      ) : (
-                        <p>
-                          Status:{" "}
-                          {launch.launch_success ? "Success" : "Failure"}
-                        </p>
-                      )}
-                    </div>
-                    <div className="col-span-1">
-                      {launch.links.mission_patch_small !== null && (
-                        <img
-                          src={launch.links.mission_patch_small}
-                          alt=""
-                        ></img>
-                      )}
-                    </div>
-                  </div>
+                  <LaunchCard launch={launch} />
                 )}
               </React.Fragment>
             ))}

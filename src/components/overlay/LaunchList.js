@@ -81,7 +81,6 @@ const LaunchList = ({
     "px-4"
   );
 
-  // TODO: Style filter buttons
   const buttonClasses = name =>
     classNames(
       "flex",

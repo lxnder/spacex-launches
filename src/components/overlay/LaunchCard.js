@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
+import classNames from "classnames";
 
 const LaunchCard = ({ launch }) => {
   const formatLaunchDate = launchTimeUnix => {
@@ -16,38 +17,73 @@ const LaunchCard = ({ launch }) => {
     }
   };
 
-  // TODO: Clear up styles + colored status
+  const cardClasses = classNames(
+    "grid",
+    "h-32",
+    "grid-cols-12",
+    "col-span-1",
+    "p-2",
+    "hover:shadow-xl",
+    "hover:border-transparent",
+    "cursor-pointer",
+    "font-questrial",
+    "transition-all",
+    "duration-100",
+    "border-b",
+    "border-subtle-10",
+    "hover:bg-clear-40"
+  );
+
+  const infoClasses = classNames(
+    "col-span-7",
+    "flex",
+    "flex-col",
+    "justify-center",
+    "items-center"
+  );
+  const imgClasses = classNames(
+    "flex",
+    "items-center",
+    "justify-center",
+    "col-span-5"
+  );
+
   // TODO: Add onClick action + global store
   // TODO: Lazy load images
   return (
-    <div className="grid h-32 grid-cols-12 col-span-1 p-2 hover:shadow-xl hover:border-transparent cursor-pointer font-questrial transition-all duration-150 border-b border-subtle-10 hover:bg-clear-40">
-      <div className="col-span-7 flex flex-col justify-center items-center">
+    <div className={cardClasses}>
+      <div className={infoClasses}>
         <p className="font-bold text-blue-900 text-lg text-center">
           {launch.mission_name}
         </p>
 
         {launch.upcoming ? (
-          <p className="text-gray-800 text-sm">
+          <p className="text text-gray-700">
             {formatRemainingTime(launch.launch_date_unix)}
           </p>
         ) : (
-          <p className="text-sm text-gray-800">
-            Status: {launch.launch_success ? "SUCCESS" : "FAILURE"}
+          <p className="text text-gray-700">
+            Status:{" "}
+            {launch.launch_success ? (
+              <span className="text-green-600">SUCCESS</span>
+            ) : (
+              <span className="text-red-500">FAILURE</span>
+            )}
           </p>
         )}
-        <p className="text-gray-600">
+        <p className="text-gray-800 text-lg">
           {formatLaunchDate(launch.launch_date_unix)}
         </p>
       </div>
-      <div className="flex items-center justify-center col-span-5">
+      <div className={imgClasses}>
         {launch.links.mission_patch_small !== null ? (
           <img
             src={launch.links.mission_patch_small}
-            alt=""
+            alt="small_patch"
             className="h-24"
           ></img>
         ) : (
-          <img src="assets/no_patch_red.png" alt="" className="h-24"></img>
+          <img src="assets/no_patch_text.png" alt="" className="h-24"></img>
         )}
       </div>
     </div>

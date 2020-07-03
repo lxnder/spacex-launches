@@ -19,7 +19,7 @@ const LaunchCard = ({ launch }) => {
 
   const cardClasses = classNames(
     "grid",
-    "h-32",
+    "h-auto",
     "grid-cols-12",
     "col-span-1",
     "p-2",
@@ -47,22 +47,24 @@ const LaunchCard = ({ launch }) => {
     "justify-center",
     "col-span-5"
   );
+  const textClasses = attributes =>
+    classNames("text-center", "text-sm", attributes);
 
   // TODO: Add onClick action + global store
   // TODO: Lazy load images
   return (
     <div className={cardClasses}>
       <div className={infoClasses}>
-        <p className="font-bold text-blue-900 text-lg text-center">
+        <p className={textClasses("font-bold text-blue-900 xs:text-lg")}>
           {launch.mission_name}
         </p>
 
         {launch.upcoming ? (
-          <p className="text text-gray-700">
+          <p className={textClasses("text-gray-700 xs:text-base")}>
             {formatRemainingTime(launch.launch_date_unix)}
           </p>
         ) : (
-          <p className="text text-gray-700">
+          <p className={textClasses("text-gray-700 xs:text-base")}>
             Status:{" "}
             {launch.launch_success ? (
               <span className="text-green-600">SUCCESS</span>
@@ -71,7 +73,7 @@ const LaunchCard = ({ launch }) => {
             )}
           </p>
         )}
-        <p className="text-gray-800 text-lg">
+        <p className={textClasses("text-gray-800 xs:text-lg")}>
           {formatLaunchDate(launch.launch_date_unix)}
         </p>
       </div>
@@ -80,10 +82,14 @@ const LaunchCard = ({ launch }) => {
           <img
             src={launch.links.mission_patch_small}
             alt="small_patch"
-            className="h-24"
+            className="h-16 xs:h-24"
           ></img>
         ) : (
-          <img src="assets/no_patch_text.png" alt="" className="h-24"></img>
+          <img
+            src="assets/no_patch_text.png"
+            alt=""
+            className="h-16 xs:h-24"
+          ></img>
         )}
       </div>
     </div>

@@ -43,42 +43,41 @@ const LaunchList = ({
   const mainDivClasses = classNames(
     "w-full",
     "h-full",
-    "px-20",
     "transition-all",
     "ease-in",
     "duration-500",
     "flex",
     "flex-col",
     "justify-center",
-    "space-y-4"
+    "items-center",
+    "px-4 sm:px-12 md:px-12 lg:px-20 xl:px-20",
+    "space-y-4",
+    "mt-20 pb-12 pt-4"
   );
 
   // TODO: Fix container sizing
   const containerClasses = classNames(
-    "container",
-    "mx-auto",
+    "w-full",
+    "max-w-screen-xl",
     "max-h-80",
     "h-full",
-    "p-4",
+    "px-4 md:p-4",
     "overflow-y-auto",
     "shadow-2xl"
   );
 
   const gridWrapperClasses = classNames(
     "grid",
-    "grid-cols-2",
+    "xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1",
     "col-gap-4",
     "h-auto"
   );
 
   const filterSelectionClasses = classNames(
-    "container",
-    "mx-auto",
     "flex",
     "justify-center",
-    "w-full",
-    "h-10",
-    "px-4"
+    "w-full sm:w-3/4 md:w-1/2 lg:w-1/3",
+    "h-8 xs:h-10"
   );
 
   const buttonClasses = name =>
@@ -86,7 +85,7 @@ const LaunchList = ({
       "flex",
       "items-center",
       "justify-center",
-      "w-64",
+      "w-1/2",
       "h-full",
       "cursor-pointer",
       "transition-all",

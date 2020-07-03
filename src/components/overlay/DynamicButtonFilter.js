@@ -51,32 +51,43 @@ const DynamicButtonFilter = ({
     { "border-b border-red-500": overlayIsActive }
   );
 
+  const wrapperClasses = classNames(
+    "w-full",
+    "h-20",
+    "flex",
+    "flex-col",
+    "justify-end",
+    "items-center",
+    "fixed top-0"
+  );
+
   const dynamicDivClasses = classNames(
     { "w-full h-16": overlayIsActive },
     { "w-3/12 h-16 border-b border-t border-gray-700": !overlayIsActive },
     "transition-all",
     "duration-1000",
     "ease-in-out",
-    "min-w-10",
-    "mt-10"
+    "min-w-10"
   );
 
   return (
-    <div className={dynamicDivClasses}>
-      {!overlayIsActive ? (
-        <button className={btnClasses} onClick={onClick}>
-          <p className={btnTextClasses}>SELECT LAUNCH</p>
-        </button>
-      ) : (
-        <input
-          type="text"
-          placeholder="Type here to filter missions..."
-          className={inputClasses}
-          onChange={setText}
-          value={inputText}
-          spellCheck="false"
-        />
-      )}
+    <div className={wrapperClasses}>
+      <div className={dynamicDivClasses}>
+        {!overlayIsActive ? (
+          <button className={btnClasses} onClick={onClick}>
+            <p className={btnTextClasses}>SELECT LAUNCH</p>
+          </button>
+        ) : (
+          <input
+            type="text"
+            placeholder="Type here to filter missions..."
+            className={inputClasses}
+            onChange={setText}
+            value={inputText}
+            spellCheck="false"
+          />
+        )}
+      </div>
     </div>
   );
 };

@@ -29,26 +29,23 @@ const Overlay = () => {
     "flex-col"
   );
 
-  const topBarClasses = classNames(
-    "z-30",
-    "flex",
-    "flex-col",
-    "justify-center",
-    "items-center",
-    "content-center",
-    "w-screen",
-    "h-16"
-  );
+  // const topBarClasses = classNames();
+  // "z-30",
+  // "flex",
+  // "flex-col",
+  // "justify-center",
+  // "items-center",
+  // "content-center",
+  // "w-screen",
+  // "h-16"
 
   return (
     <div className={mainDivClasses}>
-      <div className={topBarClasses}>
-        <DynamicButtonFilter
-          onClick={() => setOverlayIsActive(true)}
-          updateNameFilter={e => setLaunchNameFilter(e.target.value)}
-          overlayIsActive={overlayIsActive}
-        />
-      </div>
+      <DynamicButtonFilter
+        onClick={() => setOverlayIsActive(true)}
+        updateNameFilter={e => setLaunchNameFilter(e.target.value)}
+        overlayIsActive={overlayIsActive}
+      />
       {overlayIsActive && (
         <LaunchList
           launchesData={{ data, loading, error }}

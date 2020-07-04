@@ -53,7 +53,7 @@ const LaunchList = ({
     "space-y-4",
     "mt-20 min-h-0",
     "min-h-0",
-    "pb-4",
+    "pb-8",
     "pt-4"
   );
 
@@ -61,7 +61,6 @@ const LaunchList = ({
   const containerClasses = classNames(
     "w-full",
     "max-w-screen-xl",
-    "max-h-80",
     "h-full",
     "px-4 md:p-4",
     "overflow-y-auto",
@@ -79,7 +78,7 @@ const LaunchList = ({
     "flex",
     "justify-center",
     "w-full sm:w-3/4 md:w-1/2 lg:w-1/3",
-    "h-8 xs:h-10"
+    "h-8 xxs:h-10"
   );
 
   const buttonClasses = name =>

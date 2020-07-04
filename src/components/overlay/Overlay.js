@@ -29,16 +29,6 @@ const Overlay = () => {
     "flex-col"
   );
 
-  // const topBarClasses = classNames();
-  // "z-30",
-  // "flex",
-  // "flex-col",
-  // "justify-center",
-  // "items-center",
-  // "content-center",
-  // "w-screen",
-  // "h-16"
-
   return (
     <div className={mainDivClasses}>
       <DynamicButtonFilter

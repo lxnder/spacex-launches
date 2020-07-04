@@ -55,16 +55,16 @@ const LaunchCard = ({ launch }) => {
   return (
     <div className={cardClasses}>
       <div className={infoClasses}>
-        <p className={textClasses("font-bold text-blue-900 xs:text-lg")}>
+        <p className={textClasses("font-bold text-blue-900 xxs:text-lg")}>
           {launch.mission_name}
         </p>
 
         {launch.upcoming ? (
-          <p className={textClasses("text-gray-700 xs:text-base")}>
+          <p className={textClasses("text-gray-700 xxs:text-base")}>
             {formatRemainingTime(launch.launch_date_unix)}
           </p>
         ) : (
-          <p className={textClasses("text-gray-700 xs:text-base")}>
+          <p className={textClasses("text-gray-700 xxs:text-base")}>
             Status:{" "}
             {launch.launch_success ? (
               <span className="text-green-600">SUCCESS</span>
@@ -73,7 +73,7 @@ const LaunchCard = ({ launch }) => {
             )}
           </p>
         )}
-        <p className={textClasses("text-gray-800 xs:text-lg")}>
+        <p className={textClasses("text-gray-800 xxs:text-lg")}>
           {formatLaunchDate(launch.launch_date_unix)}
         </p>
       </div>
@@ -82,13 +82,13 @@ const LaunchCard = ({ launch }) => {
           <img
             src={launch.links.mission_patch_small}
             alt="small_patch"
-            className="h-16 xs:h-24"
+            className="h-16 xxs:h-24"
           ></img>
         ) : (
           <img
             src="assets/no_patch_text.png"
             alt=""
-            className="h-16 xs:h-24"
+            className="h-16 xxs:h-24"
           ></img>
         )}
       </div>

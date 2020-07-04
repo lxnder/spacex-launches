@@ -63,7 +63,9 @@ const DynamicButtonFilter = ({
 
   const dynamicDivClasses = classNames(
     { "w-full h-16": overlayIsActive },
-    { "w-3/12 h-16 border-b border-t border-gray-700": !overlayIsActive },
+    {
+      "w-3/4 xs:w-2/4 sm:w-5/12 md:w-4/12 lg:w-3/12 h-16 border-b border-t border-gray-700": !overlayIsActive,
+    },
     "transition-all",
     "duration-1000",
     "ease-in-out",

@@ -48,11 +48,13 @@ const LaunchList = ({
     "duration-500",
     "flex",
     "flex-col",
-    "justify-center",
     "items-center",
     "px-4 sm:px-12 md:px-12 lg:px-20 xl:px-20",
     "space-y-4",
-    "mt-20 pb-12 pt-4"
+    "mt-20 min-h-0",
+    "min-h-0",
+    "pb-4",
+    "pt-4"
   );
 
   // TODO: Fix container sizing

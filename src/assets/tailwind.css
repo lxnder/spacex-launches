@@ -17,14 +17,9 @@
   background: #f56565;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600;700&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
+@font-face {
+  font-family: "Questrial";
+  src: url("./Questrial-Regular.ttf") format("truetype");
+}
 
 @tailwind utilities;

@@ -3,20 +3,15 @@ import { GET_LAUNCHES } from "../../lib/queries";
 import { useQuery } from "@apollo/react-hooks";
 import classNames from "classnames";
 import DynamicButtonFilter from "./DynamicButtonFilter";
-
 import LaunchList from "./LaunchList";
+import { useStore } from "../../stores/global";
 
 const Overlay = () => {
-  const [overlayIsActive, setOverlayIsActive] = useState(true);
+  const overlayIsActive = useStore(state => state.overlayIsActive);
+  const setOverlayIsActive = useStore(state => state.setOverlayIsActive);
   const [launchNameFilter, setLaunchNameFilter] = useState("");
 
   const { loading, error, data } = useQuery(GET_LAUNCHES);
-
-  const disableOverlay = e => {
-    if (e.target === e.currentTarget) {
-      setOverlayIsActive(false);
-    }
-  };
 
   const mainDivClasses = classNames(
     "h-screen",
@@ -39,7 +34,6 @@ const Overlay = () => {
       {overlayIsActive && (
         <LaunchList
           launchesData={{ data, loading, error }}
-          disableOverlay={disableOverlay}
           launchNameFilter={launchNameFilter}
         />
       )}

@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import LaunchCard from "./LaunchCard";
+import { useStore } from "../../stores/global";
 
 const LaunchList = ({
   launchesData: { data, loading, error },
-  disableOverlay,
   launchNameFilter,
 }) => {
+  const setOverlayIsActive = useStore(state => state.setOverlayIsActive);
   const [launchesByDate, setLaunchesByDate] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState("name");
 
@@ -27,6 +28,12 @@ const LaunchList = ({
     }
   };
 
+  const disableOverlay = e => {
+    if (e.target === e.currentTarget) {
+      setOverlayIsActive(false);
+    }
+  };
+
   // Duplicates list of launches ordered by date for performance reasons after data change
   useEffect(() => {
     if (!loading && !error) {
@@ -43,9 +50,6 @@ const LaunchList = ({
   const mainDivClasses = classNames(
     "w-full",
     "h-full",
-    "transition-all",
-    "ease-in",
-    "duration-500",
     "flex",
     "flex-col",
     "items-center",
@@ -103,7 +107,7 @@ const LaunchList = ({
 
   // TODO: Loading and error status
   return (
-    <div className={mainDivClasses} onClick={disableOverlay}>
+    <div className={mainDivClasses} onClick={e => disableOverlay(e)}>
       <div className={filterSelectionClasses}>
         <div
           className={buttonClasses("name")}
@@ -136,7 +140,6 @@ const LaunchList = ({
 
 LaunchList.propTypes = {
   launchesData: PropTypes.object.isRequired,
-  disableOverlay: PropTypes.func.isRequired,
   launchNameFilter: PropTypes.string,
 };
 

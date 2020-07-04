@@ -2,8 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import classNames from "classnames";
+import { useStore } from "../../stores/global";
 
 const LaunchCard = ({ launch }) => {
+  const setOverlayIsActive = useStore(state => state.setOverlayIsActive);
+  const setSelectedLaunchID = useStore(state => state.setSelectedLaunchID);
+
   const formatLaunchDate = launchTimeUnix => {
     return moment.unix(launchTimeUnix).format("MMMM Do YYYY");
   };
@@ -15,6 +19,11 @@ const LaunchCard = ({ launch }) => {
     } else {
       return "Launching " + moment.unix(launchTimeUnix).fromNow();
     }
+  };
+
+  const onCardClick = launchID => {
+    setSelectedLaunchID(launchID);
+    setOverlayIsActive(false);
   };
 
   const cardClasses = classNames(
@@ -31,7 +40,8 @@ const LaunchCard = ({ launch }) => {
     "duration-100",
     "border-b",
     "border-subtle-10",
-    "hover:bg-clear-40"
+    "hover:bg-clear-40",
+    "z-50"
   );
 
   const infoClasses = classNames(
@@ -41,19 +51,20 @@ const LaunchCard = ({ launch }) => {
     "justify-center",
     "items-center"
   );
+
   const imgClasses = classNames(
     "flex",
     "items-center",
     "justify-center",
     "col-span-5"
   );
+
   const textClasses = attributes =>
     classNames("text-center", "text-sm", attributes);
 
-  // TODO: Add onClick action + global store
   // TODO: Lazy load images
   return (
-    <div className={cardClasses}>
+    <div className={cardClasses} onClick={() => onCardClick(launch.id)}>
       <div className={infoClasses}>
         <p className={textClasses("font-bold text-blue-900 xxs:text-lg")}>
           {launch.mission_name}

@@ -1,17 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
+import { useStore } from "../../stores/global";
 
-const DynamicButtonFilter = ({
-  onClick,
-  updateNameFilter,
-  overlayIsActive,
-}) => {
-  const [inputText, setInputText] = useState("");
+const DynamicButtonFilter = ({ onClick, overlayIsActive }) => {
+  const launchFilterName = useStore(state => state.launchFilterName);
+  const setLaunchFilterName = useStore(state => state.setLaunchFilterName);
+  // const [inputText, setInputText] = useState("");
 
   const setText = e => {
-    updateNameFilter(e);
-    setInputText(e.target.value);
+    setLaunchFilterName(e.target.value);
   };
 
   const btnClasses = classNames(
@@ -72,6 +70,7 @@ const DynamicButtonFilter = ({
     "min-w-10"
   );
 
+  // TODO set global launch name state for button title
   return (
     <div className={wrapperClasses}>
       <div className={dynamicDivClasses}>
@@ -85,7 +84,7 @@ const DynamicButtonFilter = ({
             placeholder="Type here to filter missions..."
             className={inputClasses}
             onChange={setText}
-            value={inputText}
+            value={launchFilterName}
             spellCheck="false"
           />
         )}
@@ -96,7 +95,6 @@ const DynamicButtonFilter = ({
 
 DynamicButtonFilter.propTypes = {
   onClick: PropTypes.func.isRequired,
-  updateNameFilter: PropTypes.func.isRequired,
   overlayIsActive: PropTypes.bool.isRequired,
 };
 

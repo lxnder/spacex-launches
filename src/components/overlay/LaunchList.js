@@ -4,26 +4,24 @@ import classNames from "classnames";
 import LaunchCard from "./LaunchCard";
 import { useStore } from "../../stores/global";
 
-const LaunchList = ({
-  launchesData: { data, loading, error },
-  launchNameFilter,
-}) => {
+const LaunchList = ({ launchesData: { data, loading, error } }) => {
   const setOverlayIsActive = useStore(state => state.setOverlayIsActive);
+  const launchFilterName = useStore(state => state.launchFilterName);
   const [launchesByDate, setLaunchesByDate] = useState([]);
-  const [selectedFilter, setSelectedFilter] = useState("name");
+  const [sortType, setSortType] = useState("name");
 
   const launchPassesFilter = name => {
-    if (launchNameFilter === "") {
+    if (launchFilterName === "") {
       return true;
     } else {
-      return name.toLowerCase().match(launchNameFilter.toLowerCase()) !== null;
+      return name.toLowerCase().match(launchFilterName.toLowerCase()) !== null;
     }
   };
 
   const getSelectedLaunches = () => {
-    if (selectedFilter === "name") {
+    if (sortType === "name") {
       return data.launches;
-    } else if (selectedFilter === "date") {
+    } else if (sortType === "date") {
       return launchesByDate;
     }
   };
@@ -61,7 +59,6 @@ const LaunchList = ({
     "pt-4"
   );
 
-  // TODO: Fix container sizing
   const containerClasses = classNames(
     "w-full",
     "max-w-screen-xl",
@@ -98,10 +95,9 @@ const LaunchList = ({
       "ease-in-out",
       "font-questrial",
       {
-        "shadow-inner bg-subtle-5 font-bold text-blue-900":
-          selectedFilter === name,
+        "shadow-inner bg-subtle-5 font-bold text-blue-900": sortType === name,
         "shadow-xl bg-clear-10 border border-subtle-5 text-gray-800 hover:bg-clear-50":
-          selectedFilter !== name,
+          sortType !== name,
       }
     );
 
@@ -111,13 +107,13 @@ const LaunchList = ({
       <div className={filterSelectionClasses}>
         <div
           className={buttonClasses("name")}
-          onClick={() => setSelectedFilter("name")}
+          onClick={() => setSortType("name")}
         >
           NAME
         </div>
         <div
           className={buttonClasses("date")}
-          onClick={() => setSelectedFilter("date")}
+          onClick={() => setSortType("date")}
         >
           DATE
         </div>
@@ -140,7 +136,6 @@ const LaunchList = ({
 
 LaunchList.propTypes = {
   launchesData: PropTypes.object.isRequired,
-  launchNameFilter: PropTypes.string,
 };
 
 export default LaunchList;

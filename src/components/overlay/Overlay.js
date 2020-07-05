@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { GET_LAUNCHES } from "../../lib/queries";
 import { useQuery } from "@apollo/react-hooks";
 import classNames from "classnames";
@@ -9,8 +9,6 @@ import { useStore } from "../../stores/global";
 const Overlay = () => {
   const overlayIsActive = useStore(state => state.overlayIsActive);
   const setOverlayIsActive = useStore(state => state.setOverlayIsActive);
-  const [launchNameFilter, setLaunchNameFilter] = useState("");
-
   const { loading, error, data } = useQuery(GET_LAUNCHES);
 
   const mainDivClasses = classNames(
@@ -19,7 +17,7 @@ const Overlay = () => {
     "fixed",
     "top-0",
     "left-0",
-    "z-10",
+    "z-20",
     "flex",
     "flex-col"
   );
@@ -28,14 +26,10 @@ const Overlay = () => {
     <div className={mainDivClasses}>
       <DynamicButtonFilter
         onClick={() => setOverlayIsActive(true)}
-        updateNameFilter={e => setLaunchNameFilter(e.target.value)}
         overlayIsActive={overlayIsActive}
       />
       {overlayIsActive && (
-        <LaunchList
-          launchesData={{ data, loading, error }}
-          launchNameFilter={launchNameFilter}
-        />
+        <LaunchList launchesData={{ data, loading, error }} />
       )}
     </div>
   );

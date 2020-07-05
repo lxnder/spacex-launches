@@ -74,7 +74,7 @@ const LaunchCard = ({ launch }) => {
   return (
     <div
       className={cardClasses}
-      onClick={() => onCardClick(launch.id, launch.name)}
+      onClick={() => onCardClick(launch.id, launch.mission_name)}
     >
       <div className={infoClasses}>
         <p className={textClasses("font-bold text-blue-900 xxs:text-lg")}>

@@ -21,8 +21,8 @@ const App = () => {
           className="w-3/12 h-full bg-center bg-no-repeat bg-contain"
           style={style}
         />
-      </div>
-      <div className="w-screen h-screen gradient-bg absolute top-0 left-0" /> */}
+      </div> */}
+      <div className="w-screen h-screen gradient-bg absolute top-0 left-0" />
     </ApolloProvider>
   );
 };

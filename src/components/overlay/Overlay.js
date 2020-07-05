@@ -7,7 +7,7 @@ import LaunchList from "./LaunchList";
 import { useStore } from "../../stores/global";
 
 const Overlay = () => {
-  const overlayIsActive = useStore(state => state.overlayIsActive);
+  const { overlayIsActive } = useStore();
   const { loading, error, data } = useQuery(GET_LAUNCHES);
 
   const mainDivClasses = classNames(

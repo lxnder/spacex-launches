@@ -13,6 +13,7 @@ const DynamicButtonFilter = () => {
     setLaunchFilterName,
     overlayIsActive,
     setOverlayIsActive,
+    selectedLaunchName,
   } = useStore();
 
   const setText = e => {
@@ -36,7 +37,8 @@ const DynamicButtonFilter = () => {
     "font-light",
     "text-2xl",
     "text-gray-700",
-    "none"
+    "none",
+    "whitespace-no-wrap"
   );
 
   const inputClasses = classNames(
@@ -86,7 +88,9 @@ const DynamicButtonFilter = () => {
             className={btnClasses}
             onClick={() => setOverlayIsActive(true)}
           >
-            <p className={btnTextClasses}>SELECT LAUNCH</p>
+            <p className={btnTextClasses}>
+              {selectedLaunchName !== "" ? selectedLaunchName : "SELECT LAUNCH"}
+            </p>
           </button>
         ) : (
           <input

@@ -1,12 +1,19 @@
 import React from "react";
 import classNames from "classnames";
-import PropTypes from "prop-types";
 import { useStore } from "../../stores/global";
 
-const DynamicButtonFilter = ({ onClick, overlayIsActive }) => {
-  const launchFilterName = useStore(state => state.launchFilterName);
-  const setLaunchFilterName = useStore(state => state.setLaunchFilterName);
-  // const [inputText, setInputText] = useState("");
+const DynamicButtonFilter = () => {
+  // const launchFilterName = useStore(state => state.launchFilterName);
+  // const setLaunchFilterName = useStore(state => state.setLaunchFilterName);
+  // const overlayIsActive = useStore(state => state.overlayIsActive);
+  // const setOverlayIsActive = useStore(state => state.setOverlayIsActive);
+
+  const {
+    launchFilterName,
+    setLaunchFilterName,
+    overlayIsActive,
+    setOverlayIsActive,
+  } = useStore();
 
   const setText = e => {
     setLaunchFilterName(e.target.value);
@@ -75,7 +82,10 @@ const DynamicButtonFilter = ({ onClick, overlayIsActive }) => {
     <div className={wrapperClasses}>
       <div className={dynamicDivClasses}>
         {!overlayIsActive ? (
-          <button className={btnClasses} onClick={onClick}>
+          <button
+            className={btnClasses}
+            onClick={() => setOverlayIsActive(true)}
+          >
             <p className={btnTextClasses}>SELECT LAUNCH</p>
           </button>
         ) : (
@@ -91,11 +101,6 @@ const DynamicButtonFilter = ({ onClick, overlayIsActive }) => {
       </div>
     </div>
   );
-};
-
-DynamicButtonFilter.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  overlayIsActive: PropTypes.bool.isRequired,
 };
 
 export default DynamicButtonFilter;

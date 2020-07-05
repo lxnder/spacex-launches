@@ -8,7 +8,6 @@ import { useStore } from "../../stores/global";
 
 const Overlay = () => {
   const overlayIsActive = useStore(state => state.overlayIsActive);
-  const setOverlayIsActive = useStore(state => state.setOverlayIsActive);
   const { loading, error, data } = useQuery(GET_LAUNCHES);
 
   const mainDivClasses = classNames(
@@ -24,10 +23,7 @@ const Overlay = () => {
 
   return (
     <div className={mainDivClasses}>
-      <DynamicButtonFilter
-        onClick={() => setOverlayIsActive(true)}
-        overlayIsActive={overlayIsActive}
-      />
+      <DynamicButtonFilter />
       {overlayIsActive && (
         <LaunchList launchesData={{ data, loading, error }} />
       )}

@@ -5,9 +5,15 @@ import classNames from "classnames";
 import { useStore } from "../../stores/global";
 
 const LaunchCard = ({ launch }) => {
-  const setOverlayIsActive = useStore(state => state.setOverlayIsActive);
-  const setSelectedLaunchID = useStore(state => state.setSelectedLaunchID);
-  const setSelectedLaunchName = useStore(state => state.setSelectedLaunchID);
+  // const setOverlayIsActive = useStore(state => state.setOverlayIsActive);
+  // const setSelectedLaunchID = useStore(state => state.setSelectedLaunchID);
+  // const setSelectedLaunchName = useStore(state => state.setSelectedLaunchID);
+
+  const {
+    setOverlayIsActive,
+    setSelectedLaunchID,
+    setSelectedLaunchName,
+  } = useStore();
 
   const formatLaunchDate = launchTimeUnix => {
     return moment.unix(launchTimeUnix).format("MMMM Do YYYY");

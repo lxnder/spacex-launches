@@ -5,8 +5,9 @@ import LaunchCard from "./LaunchCard";
 import { useStore } from "../../stores/global";
 
 const LaunchList = ({ launchesData: { data, loading, error } }) => {
-  const setOverlayIsActive = useStore(state => state.setOverlayIsActive);
-  const launchFilterName = useStore(state => state.launchFilterName);
+  // const setOverlayIsActive = useStore(state => state.setOverlayIsActive);
+  // const launchFilterName = useStore(state => state.launchFilterName);
+  const { setOverlayIsActive, launchFilterName } = useStore();
   const [launchesByDate, setLaunchesByDate] = useState([]);
   const [sortType, setSortType] = useState("name");
 
@@ -82,7 +83,7 @@ const LaunchList = ({ launchesData: { data, loading, error } }) => {
     "h-8 xxs:h-10"
   );
 
-  const buttonClasses = name =>
+  const buttonClasses = isActive =>
     classNames(
       "flex",
       "items-center",
@@ -95,9 +96,8 @@ const LaunchList = ({ launchesData: { data, loading, error } }) => {
       "ease-in-out",
       "font-questrial",
       {
-        "shadow-inner bg-subtle-5 font-bold text-blue-900": sortType === name,
-        "shadow-xl bg-clear-10 border border-subtle-5 text-gray-800 hover:bg-clear-50":
-          sortType !== name,
+        "shadow-inner bg-subtle-5 font-bold text-blue-900": isActive,
+        "shadow-xl bg-clear-10 border border-subtle-5 text-gray-800 hover:bg-clear-50": !isActive,
       }
     );
 
@@ -106,13 +106,13 @@ const LaunchList = ({ launchesData: { data, loading, error } }) => {
     <div className={mainDivClasses} onClick={e => disableOverlay(e)}>
       <div className={filterSelectionClasses}>
         <div
-          className={buttonClasses("name")}
+          className={buttonClasses(sortType === "name")}
           onClick={() => setSortType("name")}
         >
           NAME
         </div>
         <div
-          className={buttonClasses("date")}
+          className={buttonClasses(sortType === "date")}
           onClick={() => setSortType("date")}
         >
           DATE

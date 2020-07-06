@@ -35,10 +35,10 @@ const DynamicButtonFilter = () => {
     "self-center",
     "font-questrial",
     "font-light",
-    "text-2xl",
+    "text-base xxs:text-xl sm:text-2xl",
     "text-gray-700",
     "none",
-    "whitespace-no-wrap"
+    "sm:whitespace-no-wrap"
   );
 
   const inputClasses = classNames(

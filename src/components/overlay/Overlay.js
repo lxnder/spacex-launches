@@ -5,6 +5,7 @@ import classNames from "classnames";
 import DynamicButtonFilter from "./DynamicButtonFilter";
 import LaunchList from "./LaunchList";
 import { useStore } from "../../stores/global";
+import { AnimatePresence } from "framer-motion";
 
 const Overlay = () => {
   const { overlayIsActive } = useStore();
@@ -24,9 +25,11 @@ const Overlay = () => {
   return (
     <div className={mainDivClasses}>
       <DynamicButtonFilter />
-      {overlayIsActive && (
-        <LaunchList launchesData={{ data, loading, error }} />
-      )}
+      <AnimatePresence>
+        {overlayIsActive && (
+          <LaunchList launchesData={{ data, loading, error }} />
+        )}
+      </AnimatePresence>
     </div>
   );
 };

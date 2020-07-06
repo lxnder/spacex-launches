@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import moment from "moment";
 import classNames from "classnames";
 import { useStore } from "../../stores/global";
+import { motion } from "framer-motion";
 
 const LaunchCard = ({ launch }) => {
   // const setOverlayIsActive = useStore(state => state.setOverlayIsActive);
@@ -45,7 +46,7 @@ const LaunchCard = ({ launch }) => {
     "cursor-pointer",
     "font-questrial",
     "transition-all",
-    "duration-100",
+    "duration-50",
     "border-b",
     "border-subtle-10",
     "hover:bg-clear-40",
@@ -72,15 +73,21 @@ const LaunchCard = ({ launch }) => {
 
   // TODO: Lazy load images
   return (
-    <div
+    <motion.div
       className={cardClasses}
       onClick={() => onCardClick(launch.id, launch.mission_name)}
+      initial={{ opacity: 0, y: "2vh" }}
+      animate={{ opacity: 1, y: "0" }}
+      transition={{ duration: 1, ease: "easeOut" }}
     >
       <div className={infoClasses}>
         <p className={textClasses("font-bold text-blue-900 xxs:text-lg")}>
           {launch.mission_name}
         </p>
 
+        <p className={textClasses("text-gray-800 xxs:text-lg")}>
+          {formatLaunchDate(launch.launch_date_unix)}
+        </p>
         {launch.upcoming ? (
           <p className={textClasses("text-gray-700 xxs:text-base")}>
             {formatRemainingTime(launch.launch_date_unix)}
@@ -95,9 +102,6 @@ const LaunchCard = ({ launch }) => {
             )}
           </p>
         )}
-        <p className={textClasses("text-gray-800 xxs:text-lg")}>
-          {formatLaunchDate(launch.launch_date_unix)}
-        </p>
       </div>
       <div className={imgClasses}>
         {launch.links.mission_patch_small !== null ? (
@@ -114,7 +118,7 @@ const LaunchCard = ({ launch }) => {
           ></img>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

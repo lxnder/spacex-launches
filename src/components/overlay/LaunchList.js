@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import LaunchCard from "./LaunchCard";
 import { useStore } from "../../stores/global";
+import { motion } from "framer-motion";
 
 const LaunchList = ({ launchesData: { data, loading, error } }) => {
   // const setOverlayIsActive = useStore(state => state.setOverlayIsActive);
@@ -102,8 +103,16 @@ const LaunchList = ({ launchesData: { data, loading, error } }) => {
     );
 
   // TODO: Loading and error status
+  // TODO: No results
   return (
-    <div className={mainDivClasses} onClick={e => disableOverlay(e)}>
+    <motion.div
+      className={mainDivClasses}
+      onClick={e => disableOverlay(e)}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeInOut" }}
+      exit={{ opacity: 0 }}
+    >
       <div className={filterSelectionClasses}>
         <div
           className={buttonClasses(sortType === "name")}
@@ -130,7 +139,7 @@ const LaunchList = ({ launchesData: { data, loading, error } }) => {
             ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

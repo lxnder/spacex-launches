@@ -2,46 +2,49 @@ import { gql } from "apollo-boost";
 
 export const GET_LAUNCH = id => gql`
   {
-    launch(id: ${id}) {
+    launch(id: 30) {
       details
-      id
-      is_tentative
       launch_date_unix
       launch_site {
-        site_id
-        site_name
         site_name_long
       }
       launch_success
-      launch_year
       links {
-        presskit
         flickr_images
         article_link
         video_link
         wikipedia
         mission_patch
-        mission_patch_small
       }
-      mission_id
-      mission_name
       rocket {
         rocket {
           name
-          type
           description
-          id
           wikipedia
+          cost_per_launch
+          height {
+            feet
+            meters
+          }
+          boosters
+          diameter {
+            meters
+            feet
+          }
+          engines {
+            number
+            thrust_vacuum {
+              kN
+            }
+          }
+          stages
+          success_rate_pct
+          mass {
+            kg
+            lb
+          }
         }
       }
-      ships {
-        name
-        type
-        id
-        image
-        url
-      }
-      upcoming
     }
   }
 `;

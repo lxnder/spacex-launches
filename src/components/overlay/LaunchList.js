@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import classNames from "classnames";
 import LaunchCard from "./LaunchCard";
 import { useStore } from "../../stores/global";
 import { motion } from "framer-motion";
+import { useQuery } from "@apollo/react-hooks";
+import { GET_LAUNCHES } from "../../lib/queries";
 
-const LaunchList = ({ launchesData: { data, loading, error } }) => {
-  // const setOverlayIsActive = useStore(state => state.setOverlayIsActive);
-  // const launchFilterName = useStore(state => state.launchFilterName);
+const LaunchList = () => {
+  const { loading, error, data } = useQuery(GET_LAUNCHES);
   const { setOverlayIsActive, launchFilterName } = useStore();
   const [launchesByDate, setLaunchesByDate] = useState([]);
   const [sortType, setSortType] = useState("name");
@@ -48,6 +48,17 @@ const LaunchList = ({ launchesData: { data, loading, error } }) => {
   }, [data, loading, error]);
 
   const mainDivClasses = classNames(
+    "h-screen",
+    "w-screen",
+    "fixed",
+    "flex",
+    "flex-col",
+    "top-0",
+    "left-0",
+    "z-20"
+  );
+
+  const containerClasses = classNames(
     "w-full",
     "h-full",
     "flex",
@@ -61,7 +72,7 @@ const LaunchList = ({ launchesData: { data, loading, error } }) => {
     "pt-4"
   );
 
-  const containerClasses = classNames(
+  const launchesClasses = classNames(
     "w-full",
     "max-w-screen-xl",
     "h-full",
@@ -108,44 +119,41 @@ const LaunchList = ({ launchesData: { data, loading, error } }) => {
   return (
     <motion.div
       className={mainDivClasses}
-      onClick={e => disableOverlay(e)}
       transition={{ duration: 0.8, ease: "easeInOut" }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <div className={filterSelectionClasses}>
-        <div
-          className={buttonClasses(sortType === "name")}
-          onClick={() => setSortType("name")}
-        >
-          NAME
+      <div className={containerClasses} onClick={e => disableOverlay(e)}>
+        <div className={filterSelectionClasses}>
+          <div
+            className={buttonClasses(sortType === "name")}
+            onClick={() => setSortType("name")}
+          >
+            NAME
+          </div>
+          <div
+            className={buttonClasses(sortType === "date")}
+            onClick={() => setSortType("date")}
+          >
+            DATE
+          </div>
         </div>
-        <div
-          className={buttonClasses(sortType === "date")}
-          onClick={() => setSortType("date")}
-        >
-          DATE
-        </div>
-      </div>
-      <div className={containerClasses}>
-        <div className={gridWrapperClasses}>
-          {data &&
-            getSelectedLaunches().map(launch => (
-              <React.Fragment key={launch.id}>
-                {launchPassesFilter(launch.mission_name) && (
-                  <LaunchCard launch={launch} />
-                )}
-              </React.Fragment>
-            ))}
+        <div className={launchesClasses}>
+          <div className={gridWrapperClasses}>
+            {data &&
+              getSelectedLaunches().map(launch => (
+                <React.Fragment key={launch.id}>
+                  {launchPassesFilter(launch.mission_name) && (
+                    <LaunchCard launch={launch} />
+                  )}
+                </React.Fragment>
+              ))}
+          </div>
         </div>
       </div>
     </motion.div>
   );
-};
-
-LaunchList.propTypes = {
-  launchesData: PropTypes.object.isRequired,
 };
 
 export default LaunchList;

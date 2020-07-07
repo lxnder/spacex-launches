@@ -9,7 +9,7 @@ import Pictures from "./Pictures";
 
 const LaunchInfo = () => {
   const { selectedLaunchID } = useStore();
-  const { loading, error, data } = useQuery(GET_LAUNCH(30));
+  const { loading, error, data } = useQuery(GET_LAUNCH(selectedLaunchID || 30));
 
   const mainDivClasses = classNames(
     "absolute",
@@ -19,7 +19,8 @@ const LaunchInfo = () => {
     "pt-20",
     "h-screen",
     "bg-green-200",
-    "font-questrial"
+    "font-questrial",
+    "z-10"
   );
 
   const gridWrapperClasses = classNames(

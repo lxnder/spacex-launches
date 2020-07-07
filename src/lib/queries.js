@@ -2,7 +2,7 @@ import { gql } from "apollo-boost";
 
 export const GET_LAUNCH = id => gql`
   {
-    launch(id: 30) {
+    launch(id: ${id}) {
       details
       launch_date_unix
       launch_site {

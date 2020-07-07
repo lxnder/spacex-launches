@@ -65,7 +65,7 @@ const DynamicButtonFilter = () => {
     "flex-col",
     "justify-end",
     "items-center",
-    "fixed top-0"
+    "fixed top-0 z-50"
   );
 
   const dynamicDivClasses = classNames(

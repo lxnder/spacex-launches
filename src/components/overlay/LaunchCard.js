@@ -72,13 +72,27 @@ const LaunchCard = ({ launch }) => {
     classNames("text-center", "text-sm", attributes);
 
   // TODO: Lazy load images
+
+  const fadeInUp = {
+    start: {
+      opacity: 0,
+    },
+    end: {
+      opacity: 1,
+      transition: {
+        duration: 1,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <motion.div
       className={cardClasses}
       onClick={() => onCardClick(launch.id, launch.mission_name)}
-      initial={{ opacity: 0, y: "2vh" }}
-      animate={{ opacity: 1, y: "0" }}
-      transition={{ duration: 1, ease: "easeOut" }}
+      variants={fadeInUp}
+      initial={"start"}
+      animate={"end"}
     >
       <div className={infoClasses}>
         <p className={textClasses("font-bold text-blue-900 xxs:text-lg")}>
@@ -109,7 +123,7 @@ const LaunchCard = ({ launch }) => {
             src={launch.links.mission_patch_small}
             alt="small_patch"
             className="h-16 xxs:h-24"
-          ></img>
+          />
         ) : (
           <img
             src="assets/no_patch_text.png"

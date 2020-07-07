@@ -2,6 +2,7 @@ import React from "react";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 import Overlay from "./components/overlay/Overlay";
+import LaunchInfo from "./components/launchInfo/LaunchInfo";
 import { useStore } from "./stores/global";
 
 // TODO: Make launches, name filter and actions global
@@ -10,7 +11,7 @@ const App = () => {
     uri: process.env.GRAPHQL_API_URI || "https://api.spacex.land/graphql/",
   });
 
-  const { overlayIsActive } = useStore();
+  // const { overlayIsActive } = useStore();
 
   // const style = {
   //   backgroundImage: 'url("./assets/all_ships.png")',
@@ -27,7 +28,8 @@ const App = () => {
           />
         </div>
       )} */}
-      <div className="w-screen h-screen gradient-bg absolute top-0 left-0" />
+      <LaunchInfo />
+      {/* <div className="w-screen h-screen gradient-bg absolute top-0 left-0" /> */}
     </ApolloProvider>
   );
 };

@@ -17,7 +17,6 @@ const Overlay = () => {
     "fixed",
     "top-0",
     "left-0",
-    "z-20",
     "flex",
     "flex-col"
   );

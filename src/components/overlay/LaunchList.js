@@ -104,13 +104,14 @@ const LaunchList = ({ launchesData: { data, loading, error } }) => {
 
   // TODO: Loading and error status
   // TODO: No results
+
   return (
     <motion.div
       className={mainDivClasses}
       onClick={e => disableOverlay(e)}
+      transition={{ duration: 0.8, ease: "easeInOut" }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeInOut" }}
       exit={{ opacity: 0 }}
     >
       <div className={filterSelectionClasses}>

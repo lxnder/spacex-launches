@@ -1,28 +1,24 @@
+import { useQuery } from "@apollo/react-hooks";
 import React from "react";
-import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "@apollo/react-hooks";
+import Background from "./components/Background";
 import LaunchInfo from "./components/launchInfo/LaunchInfo";
-import LaunchList from "./components/overlay/LaunchList";
-import { useStore } from "./stores/global";
 import DynamicButtonFilter from "./components/overlay/DynamicButtonFilter";
-import { AnimatePresence } from "framer-motion";
+import LaunchList from "./components/overlay/LaunchList";
+import { GET_LAUNCHES } from "./lib/queries";
+import { useStore } from "./stores/global";
 
-// TODO: Make launches, name filter and actions global
 const App = () => {
-  const client = new ApolloClient({
-    uri: process.env.GRAPHQL_API_URI || "https://api.spacex.land/graphql/",
-  });
-
+  // Prefetching for speed purposes
+  useQuery(GET_LAUNCHES);
   const { overlayIsActive } = useStore();
 
   return (
-    <ApolloProvider client={client}>
+    <>
       <DynamicButtonFilter />
-      <AnimatePresence>
-        {overlayIsActive ? <LaunchList /> : <LaunchInfo />}
-      </AnimatePresence>
-      <div className="w-screen h-screen gradient-bg absolute top-0 left-0 z-0" />
-    </ApolloProvider>
+      {overlayIsActive && <LaunchList />}
+      <LaunchInfo />
+      <Background />
+    </>
   );
 };
 

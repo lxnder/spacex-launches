@@ -5,7 +5,6 @@ const Pictures = ({ pictures }) => {
   const pictureClasses = classNames(
     "col-span-1",
     "h-auto",
-    "bg-green-800",
     "flex",
     "items-center"
   );

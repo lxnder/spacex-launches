@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import moment from "moment";
 import classNames from "classnames";
-import { useStore } from "../../stores/global";
 import { motion } from "framer-motion";
+import moment from "moment";
+import PropTypes from "prop-types";
+import React from "react";
+import { useStore } from "../../stores/global";
 
 const LaunchCard = ({ launch }) => {
   // const setOverlayIsActive = useStore(state => state.setOverlayIsActive);
@@ -73,26 +73,26 @@ const LaunchCard = ({ launch }) => {
 
   // TODO: Lazy load images
 
-  const fadeInUp = {
-    start: {
-      opacity: 0,
-    },
-    end: {
-      opacity: 1,
-      transition: {
-        duration: 1,
-        ease: "easeOut",
-      },
-    },
-  };
+  // const fadeInUp = {
+  //   start: {
+  //     opacity: 0,
+  //   },
+  //   end: {
+  //     opacity: 1,
+  //     transition: {
+  //       duration: 1,
+  //       ease: "easeOut",
+  //     },
+  //   },
+  // };
 
   return (
     <motion.div
       className={cardClasses}
       onClick={() => onCardClick(launch.id, launch.mission_name)}
-      variants={fadeInUp}
-      initial={"start"}
-      animate={"end"}
+      // variants={fadeInUp}
+      // initial={"start"}
+      // animate={"end"}
     >
       <div className={infoClasses}>
         <p className={textClasses("font-bold text-blue-900 xxs:text-lg")}>

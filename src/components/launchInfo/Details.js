@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 
 const Details = ({ data }) => {
   const { launch_date_unix, launch_success } = data.launch;
@@ -18,34 +19,42 @@ const Details = ({ data }) => {
     mass,
   } = data.launch.rocket.rocket;
 
+  const formatLaunchDate = launchTimeUnix => {
+    return moment.unix(launchTimeUnix).format("MMMM Do YYYY");
+  };
+
   return (
-    <div id="details" className="col-span-1 h-auto bg-green-700">
-      {/* Launch date */}
-      <p>{launch_date_unix}</p>
-      {/* Launch site */}
-      <p> {site_name_long}</p>
-      {/* Launch Success */}
-      <p> {launch_success}</p>
-      {/* Article */}
-      <p> {article_link}</p>
-      {/* Wikipedia */}
-      <p> {data.launch.links.wikipedia}</p>
-      {/* Rocket */}
-      <p> {name}</p>
-      <p>{description}</p>
-      <p>{wikipedia}</p>
-      <p>{cost_per_launch}</p>
-      <p>{height.feet}</p>
-      <p>{height.meters}</p>
-      <p>{boosters}</p>
-      <p>{diameter.meters}</p>
-      <p>{diameter.feet}</p>
-      <p>{engines.number}</p>
-      <p>{engines.thrust_vacuum.kN}</p>
-      <p>{stages}</p>
-      <p>{success_rate_pct}</p>
-      <p>{mass.kg}</p>
-      <p>{mass.lb}</p>
+    <div id="details" className="col-span-1 h-auto space-y-2 text-gray-800">
+      <p>GENERAL</p>
+      <p>Launch date: {formatLaunchDate(launch_date_unix)}</p>
+      <p>Launch result: {launch_success ? "SUCCESS" : "FAILURE"}</p>
+      <p>Site name: {site_name_long}</p>
+      <p>ROCKET</p>
+      <p>Name: {name}</p>
+      <p>Description: {description}</p>
+      <p>Wikipedia: {wikipedia}</p>
+      <p>Cost per launch: {cost_per_launch}</p>
+      <p>
+        Height: {height.feet}ft/{height.meters}mt
+      </p>
+      <p>Boosters: {boosters}</p>
+      <p>
+        Diameter: {diameter.feet}ft/{diameter.meters}mt
+      </p>
+      <p>Number of engines: {engines.number}</p>
+      <p>Thrust (vacuum): {engines.thrust_vacuum.kN}/kN</p>
+      <p>Stages: {stages}</p>
+      <p>Success rate: {success_rate_pct}%</p>
+      <p>
+        Mass: {mass.lb}lbs/{mass.kg}kgs
+      </p>
+      <p>MEDIA</p>
+      <a href={article_link}>
+        <p>Article</p>
+      </a>
+      <a href={data.launch.links.wikipedia}>
+        <p>Wikipedia</p>
+      </a>
     </div>
   );
 };

@@ -55,7 +55,8 @@ const LaunchList = () => {
     "flex-col",
     "top-0",
     "left-0",
-    "z-20"
+    "z-20",
+    "bg-transp-50"
   );
 
   const containerClasses = classNames(
@@ -78,7 +79,8 @@ const LaunchList = () => {
     "h-full",
     "px-4 md:p-4",
     "overflow-y-auto",
-    "shadow-2xl"
+    "shadow-2xl",
+    "gradient-bg-card"
   );
 
   const gridWrapperClasses = classNames(
@@ -119,10 +121,10 @@ const LaunchList = () => {
   return (
     <motion.div
       className={mainDivClasses}
-      transition={{ duration: 0.8, ease: "easeInOut" }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      // transition={{ duration: 0.8, ease: "easeInOut" }}
+      // initial={{ opacity: 0 }}
+      // animate={{ opacity: 1 }}
+      // exit={{ opacity: 0 }}
     >
       <div className={containerClasses} onClick={e => disableOverlay(e)}>
         <div className={filterSelectionClasses}>

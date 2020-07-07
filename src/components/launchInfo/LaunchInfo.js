@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useStore } from "../../stores/global";
 import { GET_LAUNCH } from "../../lib/queries";
 import { useQuery } from "@apollo/react-hooks";
@@ -18,13 +18,11 @@ const LaunchInfo = () => {
     "w-screen",
     "pt-20",
     "h-screen",
-    "bg-green-200",
     "font-questrial",
     "z-10"
   );
 
   const gridWrapperClasses = classNames(
-    "bg-green-300",
     "w-full",
     "h-full",
     "grid",

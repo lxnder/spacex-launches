@@ -3,11 +3,6 @@ import classNames from "classnames";
 import { useStore } from "../../stores/global";
 
 const DynamicButtonFilter = () => {
-  // const launchFilterName = useStore(state => state.launchFilterName);
-  // const setLaunchFilterName = useStore(state => state.setLaunchFilterName);
-  // const overlayIsActive = useStore(state => state.overlayIsActive);
-  // const setOverlayIsActive = useStore(state => state.setOverlayIsActive);
-
   const {
     launchFilterName,
     setLaunchFilterName,
@@ -34,8 +29,8 @@ const DynamicButtonFilter = () => {
   const btnTextClasses = classNames(
     "self-center",
     "font-questrial",
-    "font-light",
     "text-base xxs:text-xl sm:text-2xl",
+    "font-light",
     "text-gray-700",
     "none",
     "sm:whitespace-no-wrap"
@@ -79,7 +74,6 @@ const DynamicButtonFilter = () => {
     "min-w-10"
   );
 
-  // TODO set global launch name state for button title
   return (
     <div className={wrapperClasses}>
       <div className={dynamicDivClasses}>

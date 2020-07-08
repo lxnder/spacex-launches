@@ -11,7 +11,6 @@ export const GET_LAUNCH = id => gql`
       launch_success
       links {
         flickr_images
-        article_link
         video_link
         wikipedia
         mission_patch

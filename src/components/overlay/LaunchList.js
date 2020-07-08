@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from "react";
-import classNames from "classnames";
-import LaunchCard from "./LaunchCard";
-import { useStore } from "../../stores/global";
-import { motion } from "framer-motion";
 import { useQuery } from "@apollo/react-hooks";
+import classNames from "classnames";
+import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
 import { GET_LAUNCHES } from "../../lib/queries";
+import { useStore } from "../../stores/global";
+import LaunchCard from "./LaunchCard";
 
 const LaunchList = () => {
   const { loading, error, data } = useQuery(GET_LAUNCHES);
-  const { setOverlayIsActive, launchFilterName } = useStore();
+  const {
+    setOverlayIsActive,
+    launchFilterName,
+    sortType,
+    setSortType,
+  } = useStore();
   const [launchesByDate, setLaunchesByDate] = useState([]);
-  const [sortType, setSortType] = useState("name");
 
   const launchPassesFilter = name => {
     if (launchFilterName === "") {

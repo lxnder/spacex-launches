@@ -5,7 +5,6 @@ import classNames from "classnames";
 const Details = ({ data }) => {
   const { launch_date_unix, launch_success } = data.launch;
   const { site_name_long } = data.launch.launch_site;
-  const { article_link } = data.launch.links;
   const {
     name,
     description,

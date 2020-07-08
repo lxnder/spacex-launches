@@ -4,7 +4,8 @@ import classNames from "classnames";
 const Description = ({ description }) => {
   const descriptionClasses = exists =>
     classNames(
-      "py-6",
+      "pt-10",
+      "pb-12",
       "px-16",
       "h-auto",
       "text-center",

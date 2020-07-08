@@ -21,4 +21,9 @@ export const [useStore] = create(set => ({
     set(() => ({
       launchFilterName: name,
     })),
+  sortType: "name",
+  setSortType: type =>
+    set(() => ({
+      sortType: type,
+    })),
 }));

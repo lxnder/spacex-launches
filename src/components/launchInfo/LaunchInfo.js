@@ -10,12 +10,10 @@ import Pictures from "./Pictures";
 const LaunchInfo = () => {
   const { selectedLaunchID } = useStore();
   const [rand, setRand] = useState(1);
-  const { loading, error, data } = useQuery(
-    GET_LAUNCH(selectedLaunchID || 110)
-  );
+  const { loading, error, data } = useQuery(GET_LAUNCH(selectedLaunchID));
 
   useEffect(() => {
-    setRand(1 + Math.floor(Math.random() * Math.floor(50)));
+    setRand(1 + Math.floor(Math.random() * Math.floor(106)));
   }, []);
 
   const mainDivClasses = classNames(
@@ -36,10 +34,10 @@ const LaunchInfo = () => {
     "grid",
     "grid-cols-12",
     "px-16",
-    "pb-8",
-    "col-gap-8",
-    "overflow-y-auto"
-    // "max-w-screen-xl"
+    "py-8",
+    // "col-gap-8",
+    "overflow-y-auto",
+    "max-w-screen-xxl"
   );
 
   return (

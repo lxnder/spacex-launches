@@ -31,40 +31,47 @@ const Details = ({ data }) => {
     "justify-center",
     "h-auto",
     "text-gray-800",
-    "p-4"
+    "p-4",
+    "content-between"
   );
 
   return (
     <div id="details" className={mainDivClasses}>
-      <p className="text-lg font-bold text-blue-900">INFORMATION</p>
-      <p>Launch date: {formatLaunchDate(launch_date_unix)}</p>
-      <p>Result: {launch_success ? "SUCCESS" : "FAILURE"}</p>
-      <p>Site name: {site_name_long}</p>
-      <p className="text-lg font-bold text-blue-900">ROCKET - {name}</p>
-      <p>{description}</p>
-      <p>Wikipedia: {wikipedia}</p>
-      <p>Cost per launch: ${cost_per_launch}</p>
-      <p>
-        Height: {height.feet}ft/{height.meters}m
-      </p>
-      <p>Boosters: {boosters}</p>
-      <p>
-        Diameter: {diameter.feet}ft/{diameter.meters}m
-      </p>
-      <p>Number of engines: {engines.number}</p>
-      <p>Thrust (vacuum): {engines.thrust_vacuum.kN}/kN</p>
-      <p>Stages: {stages}</p>
-      <p>Success rate: {success_rate_pct}%</p>
-      <p>
-        Mass: {mass.lb}lbs/{mass.kg}kgs
-      </p>
-      <p className="text-lg font-bold text-blue-900">MEDIA</p>
-      <a href={article_link}>
-        <p>Article</p>
-      </a>
-      <a href={data.launch.links.wikipedia}>
-        <p>Wikipedia</p>
-      </a>
+      <div id="INFORMATION">
+        <p className="text-lg font-bold text-blue-900">INFORMATION</p>
+        <p>Launch date: {formatLaunchDate(launch_date_unix)}</p>
+        <p>Result: {launch_success ? "SUCCESS" : "FAILURE"}</p>
+        <p>Site name: {site_name_long}</p>
+      </div>
+      <div id="ROCKET">
+        <p className="text-lg font-bold text-blue-900">ROCKET - {name}</p>
+        <p>{description}</p>
+        <p>Wikipedia: {wikipedia}</p>
+        <p>Cost per launch: ${cost_per_launch}</p>
+        <p>
+          Height: {height.feet}ft/{height.meters}m
+        </p>
+        <p>Boosters: {boosters}</p>
+        <p>
+          Diameter: {diameter.feet}ft/{diameter.meters}m
+        </p>
+        <p>Number of engines: {engines.number}</p>
+        <p>Thrust (vacuum): {engines.thrust_vacuum.kN}/kN</p>
+        <p>Stages: {stages}</p>
+        <p>Success rate: {success_rate_pct}%</p>
+        <p>
+          Mass: {mass.lb}lbs/{mass.kg}kgs
+        </p>
+      </div>
+      <div id="MEDIA">
+        <p className="text-lg font-bold text-blue-900">MEDIA</p>
+        <a href={article_link}>
+          <p>Article</p>
+        </a>
+        <a href={data.launch.links.wikipedia}>
+          <p>Wikipedia</p>
+        </a>
+      </div>
     </div>
   );
 };

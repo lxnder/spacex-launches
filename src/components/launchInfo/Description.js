@@ -14,8 +14,8 @@ const Description = ({ description }) => {
       "text-lg",
       { "text-blue-800": exists },
       { "text-red-500": !exists },
-      "max-w-screen-xxl"
-      // "border-b border-subtle-5"
+      "max-w-screen-xxl",
+      "border-b border-subtle-5"
     );
 
   return (

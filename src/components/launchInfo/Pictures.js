@@ -28,7 +28,8 @@ const Pictures = ({ pictures }) => {
     "bg-contain",
     "bg-no-repeat",
     "w-full",
-    "h-full"
+    "h-full",
+    "rounded-lg"
   );
 
   const arrowContainerClasses = classNames(

@@ -9,6 +9,7 @@ import Pictures from "./Pictures";
 
 const LaunchInfo = () => {
   const { selectedLaunchID } = useStore();
+  // eslint-disable-next-line
   const [rand, setRand] = useState(1);
   const { loading, error, data } = useQuery(GET_LAUNCH(selectedLaunchID));
 

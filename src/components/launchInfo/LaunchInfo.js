@@ -11,7 +11,9 @@ const LaunchInfo = () => {
   const { selectedLaunchID } = useStore();
   // eslint-disable-next-line
   const [rand, setRand] = useState(1);
-  const { loading, error, data } = useQuery(GET_LAUNCH(selectedLaunchID));
+  const { loading, error, data } = useQuery(
+    GET_LAUNCH(selectedLaunchID || rand)
+  );
 
   useEffect(() => {
     setRand(1 + Math.floor(Math.random() * Math.floor(106)));
@@ -34,11 +36,11 @@ const LaunchInfo = () => {
     "h-full",
     "grid",
     "grid-cols-12",
-    "px-16",
-    "py-8",
+    // "px-16",
+    // "py-8",
     // "col-gap-8",
-    "overflow-y-auto",
-    "max-w-screen-xxl"
+    "overflow-y-auto"
+    // "max-w-screen-xxl"
   );
 
   return (

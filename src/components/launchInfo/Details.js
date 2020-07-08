@@ -32,7 +32,8 @@ const Details = ({ data }) => {
     "h-auto",
     "text-gray-800",
     "p-4",
-    "content-between"
+    "content-between",
+    "bg-subtle-2"
   );
 
   return (
@@ -42,11 +43,16 @@ const Details = ({ data }) => {
         <p>Launch date: {formatLaunchDate(launch_date_unix)}</p>
         <p>Result: {launch_success ? "SUCCESS" : "FAILURE"}</p>
         <p>Site name: {site_name_long}</p>
+        <a href={data.launch.links.wikipedia}>
+          <p>Wikipedia</p>
+        </a>
       </div>
       <div id="ROCKET">
         <p className="text-lg font-bold text-blue-900">ROCKET - {name}</p>
         <p>{description}</p>
-        <p>Wikipedia: {wikipedia}</p>
+        <a href={wikipedia}>
+          <p>Wikipedia</p>
+        </a>
         <p>Cost per launch: ${cost_per_launch}</p>
         <p>
           Height: {height.feet}ft/{height.meters}m
@@ -60,17 +66,8 @@ const Details = ({ data }) => {
         <p>Stages: {stages}</p>
         <p>Success rate: {success_rate_pct}%</p>
         <p>
-          Mass: {mass.lb}lbs/{mass.kg}kgs
+          Mass: {mass.lb}lbs/{mass.kg}kg
         </p>
-      </div>
-      <div id="MEDIA">
-        <p className="text-lg font-bold text-blue-900">MEDIA</p>
-        <a href={article_link}>
-          <p>Article</p>
-        </a>
-        <a href={data.launch.links.wikipedia}>
-          <p>Wikipedia</p>
-        </a>
       </div>
     </div>
   );

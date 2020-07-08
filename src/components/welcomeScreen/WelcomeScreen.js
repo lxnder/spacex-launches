@@ -58,7 +58,7 @@ const WelcomeScreen = () => {
             alt="unofficial_logo"
           />
           <div className="w-5/12 border-t border-gray-700 p-2">
-            <p className="text-center text-base xxs:text-xl sm:text-2xl font-questrial text-gray-700">
+            <p className="text-center text-base xxs:text-xl sm:text-2xl font-questrial text-gray-700 whitespace-no-wrap">
               UNOFFICIAL LAUNCHES SITE
             </p>
           </div>

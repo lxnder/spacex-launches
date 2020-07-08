@@ -1,15 +1,22 @@
-import React, { useEffect } from "react";
-import { useStore } from "../../stores/global";
-import { GET_LAUNCH } from "../../lib/queries";
 import { useQuery } from "@apollo/react-hooks";
 import classNames from "classnames";
-import Details from "./Details";
+import React, { useEffect, useState } from "react";
+import { GET_LAUNCH } from "../../lib/queries";
+import { useStore } from "../../stores/global";
 import Description from "./Description";
+import Details from "./Details";
 import Pictures from "./Pictures";
 
 const LaunchInfo = () => {
   const { selectedLaunchID } = useStore();
-  const { loading, error, data } = useQuery(GET_LAUNCH(selectedLaunchID || 30));
+  const [rand, setRand] = useState(1);
+  const { loading, error, data } = useQuery(
+    GET_LAUNCH(selectedLaunchID || 110)
+  );
+
+  useEffect(() => {
+    setRand(1 + Math.floor(Math.random() * Math.floor(50)));
+  }, []);
 
   const mainDivClasses = classNames(
     "absolute",
@@ -19,28 +26,32 @@ const LaunchInfo = () => {
     "pt-20",
     "h-screen",
     "font-questrial",
-    "z-10"
+    "z-10",
+    "flex flex-col items-center"
   );
 
   const gridWrapperClasses = classNames(
     "w-full",
     "h-full",
     "grid",
-    "grid-cols-2",
-    "py-8",
+    "grid-cols-12",
     "px-16",
-    "space-y-8",
+    "pb-8",
+    "col-gap-8",
     "overflow-y-auto"
+    // "max-w-screen-xl"
   );
 
   return (
     <div className={mainDivClasses}>
       {!loading && !error && (
-        <div className={gridWrapperClasses}>
+        <>
           <Description description={data.launch.details} />
-          <Details data={data} />
-          <Pictures pictures={data.launch.links.flickr_images} />
-        </div>
+          <div className={gridWrapperClasses}>
+            <Details data={data} />
+            <Pictures pictures={data.launch.links.flickr_images} />
+          </div>
+        </>
       )}
     </div>
   );

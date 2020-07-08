@@ -56,7 +56,7 @@ const LaunchList = () => {
     "top-0",
     "left-0",
     "z-20",
-    "bg-transp-50"
+    "bg-transp-95"
   );
 
   const containerClasses = classNames(

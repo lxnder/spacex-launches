@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import classNames from "classnames";
 
 const Details = ({ data }) => {
   const { launch_date_unix, launch_success } = data.launch;
@@ -23,23 +24,32 @@ const Details = ({ data }) => {
     return moment.unix(launchTimeUnix).format("MMMM Do YYYY");
   };
 
+  const mainDivClasses = classNames(
+    "col-span-5",
+    "flex",
+    "flex-col",
+    "justify-center",
+    "h-auto",
+    "text-gray-800",
+    "p-4"
+  );
+
   return (
-    <div id="details" className="col-span-1 h-auto space-y-2 text-gray-800">
-      <p>GENERAL</p>
+    <div id="details" className={mainDivClasses}>
+      <p className="text-lg font-bold text-blue-900">INFORMATION</p>
       <p>Launch date: {formatLaunchDate(launch_date_unix)}</p>
-      <p>Launch result: {launch_success ? "SUCCESS" : "FAILURE"}</p>
+      <p>Result: {launch_success ? "SUCCESS" : "FAILURE"}</p>
       <p>Site name: {site_name_long}</p>
-      <p>ROCKET</p>
-      <p>Name: {name}</p>
-      <p>Description: {description}</p>
+      <p className="text-lg font-bold text-blue-900">ROCKET - {name}</p>
+      <p>{description}</p>
       <p>Wikipedia: {wikipedia}</p>
-      <p>Cost per launch: {cost_per_launch}</p>
+      <p>Cost per launch: ${cost_per_launch}</p>
       <p>
-        Height: {height.feet}ft/{height.meters}mt
+        Height: {height.feet}ft/{height.meters}m
       </p>
       <p>Boosters: {boosters}</p>
       <p>
-        Diameter: {diameter.feet}ft/{diameter.meters}mt
+        Diameter: {diameter.feet}ft/{diameter.meters}m
       </p>
       <p>Number of engines: {engines.number}</p>
       <p>Thrust (vacuum): {engines.thrust_vacuum.kN}/kN</p>
@@ -48,7 +58,7 @@ const Details = ({ data }) => {
       <p>
         Mass: {mass.lb}lbs/{mass.kg}kgs
       </p>
-      <p>MEDIA</p>
+      <p className="text-lg font-bold text-blue-900">MEDIA</p>
       <a href={article_link}>
         <p>Article</p>
       </a>

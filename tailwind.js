@@ -12,6 +12,7 @@ module.exports = {
       md: "768px",
       lg: "1024px",
       xl: "1280px",
+      xxl: "1550px",
     },
     colors: {
       transparent: "transparent",
@@ -177,6 +178,9 @@ module.exports = {
         70: "rgba(255, 255, 255, 0.70)",
         75: "rgba(255, 255, 255, 0.75)",
         80: "rgba(255, 255, 255, 0.80)",
+        85: "rgba(255, 255, 255, 0.85)",
+        90: "rgba(255, 255, 255, 0.90)",
+        95: "rgba(255, 255, 255, 0.95)",
       },
     },
     spacing: {

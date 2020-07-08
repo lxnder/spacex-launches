@@ -6,7 +6,7 @@ const Background = () => {
     "w-screen",
     "h-screen",
     "gradient-bg",
-    "absolute",
+    "fixed",
     "top-0",
     "left-0",
     "z-0"

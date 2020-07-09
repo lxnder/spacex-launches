@@ -34,13 +34,8 @@ const LaunchInfo = () => {
   const gridWrapperClasses = classNames(
     "w-full",
     "h-full",
-    "grid",
-    "grid-cols-12",
-    // "px-16",
-    // "py-8",
-    // "col-gap-8",
-    "overflow-y-auto"
-    // "max-w-screen-xxl"
+    "overflow-y-auto",
+    "bg-cover bg-no-repeat bg-center"
   );
 
   return (
@@ -48,9 +43,19 @@ const LaunchInfo = () => {
       {!loading && !error && (
         <>
           <Description description={data.launch.details} />
-          <div className={gridWrapperClasses}>
-            <Details data={data} />
-            <Pictures pictures={data.launch.links.flickr_images} />
+          <div
+            className={gridWrapperClasses}
+            style={{
+              backgroundImage: `url(${data.launch.links.flickr_images[0]})`,
+            }}
+          >
+            <div
+              className="w-full h-full grid grid-cols-12"
+              style={{ backdropFilter: "blur(8px)" }}
+            >
+              <Details data={data} />
+              <Pictures pictures={data.launch.links.flickr_images} />
+            </div>
           </div>
         </>
       )}

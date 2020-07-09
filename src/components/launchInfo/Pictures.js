@@ -7,20 +7,18 @@ const Pictures = ({ pictures }) => {
   const containerClasses = classNames(
     "col-span-7",
     "h-auto",
-    // "p-4",
     "grid grid-cols-12"
   );
 
-  const bgClasses = classNames(
+  const blurBgClasses = classNames(
     "bg-center",
     "bg-cover",
     "bg-no-repeat",
     "w-full",
     "h-full",
-    "col-span-12"
+    "col-span-12",
+    "bg-subtle-60"
   );
-
-  const blurClasses = classNames("w-full", "h-full", "rounded-lg");
 
   const pictureClasses = classNames(
     "bg-center",
@@ -35,7 +33,7 @@ const Pictures = ({ pictures }) => {
     classNames(
       "w-12",
       "h-12",
-      "bg-subtle-40",
+      "bg-subtle-60",
       "rounded-full",
       "flex",
       "items-center",
@@ -82,37 +80,25 @@ const Pictures = ({ pictures }) => {
           <p className="text-lg text-red-500">-NO IMAGES FOUND-</p>
         </div>
       ) : (
-        <>
+        <div className={blurBgClasses}>
           <div
-            className={bgClasses}
-            style={{
-              backgroundImage: `url(${pictures[index]}`,
-            }}
+            className={pictureClasses}
+            style={{ backgroundImage: `url(${pictures[index]}` }}
           >
             <div
-              className={blurClasses}
-              style={{ backdropFilter: "blur(16px)" }}
+              className={arrowContainerClasses("left")}
+              onClick={previousPicture}
             >
-              <div
-                className={pictureClasses}
-                style={{ backgroundImage: `url(${pictures[index]}` }}
-              >
-                <div
-                  className={arrowContainerClasses("left")}
-                  onClick={previousPicture}
-                >
-                  <div className={arrowClasses("left")} />
-                </div>
-                <div
-                  className={arrowContainerClasses("right")}
-                  onClick={nextPicture}
-                >
-                  <div className={arrowClasses("right")} />
-                </div>
-              </div>
+              <div className={arrowClasses("left")} />
+            </div>
+            <div
+              className={arrowContainerClasses("right")}
+              onClick={nextPicture}
+            >
+              <div className={arrowClasses("right")} />
             </div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

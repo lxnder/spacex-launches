@@ -32,7 +32,7 @@ const Details = ({ data }) => {
     "text-gray-800",
     "p-4",
     "content-between",
-    "bg-subtle-2"
+    "bg-clear-80"
   );
 
   return (

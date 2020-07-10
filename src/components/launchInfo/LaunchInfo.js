@@ -11,53 +11,42 @@ const LaunchInfo = () => {
   const { selectedLaunchID } = useStore();
   // eslint-disable-next-line
   const [rand, setRand] = useState(1);
-  const { loading, error, data } = useQuery(
-    GET_LAUNCH(selectedLaunchID || rand)
-  );
+  const { loading, error, data } = useQuery(GET_LAUNCH(selectedLaunchID));
 
   useEffect(() => {
     setRand(1 + Math.floor(Math.random() * Math.floor(106)));
   }, []);
 
   const mainDivClasses = classNames(
-    "absolute",
-    "top-0",
-    "left-0",
-    "w-screen",
+    "w-screen h-screen",
+    "absolute top-0 left-0",
     "pt-20",
-    "h-screen",
-    "font-questrial",
     "z-10",
-    "flex flex-col items-center"
-  );
-
-  const gridWrapperClasses = classNames(
-    "w-full",
-    "h-full",
-    "overflow-y-auto",
-    "bg-cover bg-no-repeat bg-center"
+    "font-questrial"
   );
 
   return (
     <div className={mainDivClasses}>
       {!loading && !error && (
-        <>
+        <div className="w-full h-full flex flex-col items-center overflow-y-auto">
           <Description description={data.launch.details} />
           <div
-            className={gridWrapperClasses}
+            className="w-full h-full bg-cover bg-no-repeat bg-center"
             style={{
               backgroundImage: `url(${data.launch.links.flickr_images[0]})`,
             }}
           >
             <div
-              className="w-full h-full grid grid-cols-12"
+              className="w-full h-full"
               style={{ backdropFilter: "blur(8px)" }}
             >
-              <Details data={data} />
-              <Pictures pictures={data.launch.links.flickr_images} />
+              <div className="w-full h-full grid grid-cols-12">
+                <Details data={data} />
+                <Pictures pictures={data.launch.links.flickr_images} />
+              </div>
             </div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

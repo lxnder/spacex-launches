@@ -10,7 +10,7 @@ const WelcomeScreen = () => {
     "flex-col",
     "items-center",
     "pt-32",
-    "p-12",
+    "p-24",
     "z-10"
   );
 

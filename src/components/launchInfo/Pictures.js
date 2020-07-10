@@ -4,40 +4,26 @@ import classNames from "classnames";
 const Pictures = ({ pictures }) => {
   const [index, setIndex] = useState(0);
 
-  const containerClasses = classNames(
-    "col-span-7",
-    "h-auto",
-    "grid grid-cols-12"
-  );
+  const containerClasses = classNames("col-span-7");
 
   const blurBgClasses = classNames(
-    "bg-center",
-    "bg-cover",
-    "bg-no-repeat",
-    "w-full",
-    "h-full",
-    "col-span-12",
-    "bg-subtle-60"
+    "w-full h-full",
+    "bg-center bg-cover bg-no-repeat bg-subtle-60"
   );
 
   const pictureClasses = classNames(
-    "bg-center",
-    "bg-contain",
-    "bg-no-repeat",
-    "w-full",
-    "h-full",
-    "flex items-center justify-between px-4"
+    "w-full h-full",
+    "flex items-center justify-between",
+    "bg-center bg-contain bg-no-repeat",
+    "px-4"
   );
 
   const arrowContainerClasses = direction =>
     classNames(
-      "w-12",
-      "h-12",
+      "w-12 h-12",
+      "flex items-center justify-center",
       "bg-subtle-60",
       "rounded-full",
-      "flex",
-      "items-center",
-      "justify-center",
       "cursor-pointer",
       { "pl-2": direction === "left" },
       { "pr-2": direction === "right" }
@@ -45,13 +31,10 @@ const Pictures = ({ pictures }) => {
 
   const arrowClasses = direction =>
     classNames(
-      "w-5",
-      "h-5",
+      "w-5 h-5",
+      "transform transition",
+      "ease-in-out duration-200",
       "border-white",
-      "transform",
-      "transition",
-      "ease-in-out",
-      "duration-200",
       { "border-t border-r rotate-45": direction === "right" },
       { "border-t border-l -rotate-45": direction === "left" }
     );
@@ -76,7 +59,7 @@ const Pictures = ({ pictures }) => {
   return (
     <div className={containerClasses}>
       {pictures.length < 1 ? (
-        <div className="col-span-12 flex flex-col justify-center items-center">
+        <div className="flex flex-col items-center justify-center w-full h-full">
           <p className="text-lg text-red-500">-NO IMAGES FOUND-</p>
         </div>
       ) : (
@@ -85,18 +68,22 @@ const Pictures = ({ pictures }) => {
             className={pictureClasses}
             style={{ backgroundImage: `url(${pictures[index]}` }}
           >
-            <div
-              className={arrowContainerClasses("left")}
-              onClick={previousPicture}
-            >
-              <div className={arrowClasses("left")} />
-            </div>
-            <div
-              className={arrowContainerClasses("right")}
-              onClick={nextPicture}
-            >
-              <div className={arrowClasses("right")} />
-            </div>
+            {pictures.length > 1 && (
+              <>
+                <div
+                  className={arrowContainerClasses("left")}
+                  onClick={previousPicture}
+                >
+                  <div className={arrowClasses("left")} />
+                </div>
+                <div
+                  className={arrowContainerClasses("right")}
+                  onClick={nextPicture}
+                >
+                  <div className={arrowClasses("right")} />
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}

@@ -1,15 +1,10 @@
 import classNames from "classnames";
-import { motion } from "framer-motion";
 import moment from "moment";
 import PropTypes from "prop-types";
 import React from "react";
 import { useStore } from "../../stores/global";
 
 const LaunchCard = ({ launch }) => {
-  // const setOverlayIsActive = useStore(state => state.setOverlayIsActive);
-  // const setSelectedLaunchID = useStore(state => state.setSelectedLaunchID);
-  // const setSelectedLaunchName = useStore(state => state.setSelectedLaunchID);
-
   const {
     setOverlayIsActive,
     setSelectedLaunchID,
@@ -36,63 +31,31 @@ const LaunchCard = ({ launch }) => {
   };
 
   const cardClasses = classNames(
-    "grid",
     "h-auto",
-    "grid-cols-12",
-    "col-span-1",
+    "grid grid-cols-12 col-span-1",
+    "z-50",
     "p-2",
-    "hover:shadow-xl",
-    "hover:border-transparent",
-    "cursor-pointer",
     "font-questrial",
-    "transition-all",
-    "duration-50",
-    "border-b",
-    "border-subtle-10",
-    "hover:bg-clear-40",
-    "z-50"
+    "cursor-pointer",
+    "border-b border-subtle-10",
+    "transition-all duration-50",
+    "hover:shadow-xl hover:border-transparent hover:bg-clear-40"
   );
 
   const infoClasses = classNames(
-    "col-span-7",
-    "flex",
-    "flex-col",
-    "justify-center",
-    "items-center"
+    "flex flex-col justify-center items-center col-span-7"
   );
 
-  const imgClasses = classNames(
-    "flex",
-    "items-center",
-    "justify-center",
-    "col-span-5"
-  );
+  const imgClasses = classNames("flex items-center justify-center col-span-5");
 
   const textClasses = attributes =>
     classNames("text-center", "text-sm", attributes);
 
-  // TODO: Lazy load images
-
-  // const fadeInUp = {
-  //   start: {
-  //     opacity: 0,
-  //   },
-  //   end: {
-  //     opacity: 1,
-  //     transition: {
-  //       duration: 1,
-  //       ease: "easeOut",
-  //     },
-  //   },
-  // };
-
+  // TODO: clean up styles
   return (
-    <motion.div
+    <div
       className={cardClasses}
       onClick={() => onCardClick(launch.id, launch.mission_name)}
-      // variants={fadeInUp}
-      // initial={"start"}
-      // animate={"end"}
     >
       <div className={infoClasses}>
         <p className={textClasses("font-bold text-blue-900 xxs:text-lg")}>
@@ -132,7 +95,7 @@ const LaunchCard = ({ launch }) => {
           ></img>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 };
 

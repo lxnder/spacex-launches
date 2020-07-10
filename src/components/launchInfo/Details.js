@@ -1,6 +1,6 @@
-import React from "react";
-import moment from "moment";
 import classNames from "classnames";
+import moment from "moment";
+import React from "react";
 
 const Details = ({ data }) => {
   const { launch_date_unix, launch_success } = data.launch;
@@ -18,55 +18,87 @@ const Details = ({ data }) => {
     success_rate_pct,
     mass,
   } = data.launch.rocket.rocket;
+  const { mission_patch } = data.launch.links;
 
   const formatLaunchDate = launchTimeUnix => {
     return moment.unix(launchTimeUnix).format("MMMM Do YYYY");
   };
 
   const mainDivClasses = classNames(
+    "overflow-y-auto",
     "col-span-5",
-    "flex",
-    "flex-col",
-    "justify-center",
-    "h-auto",
+    "flex flex-col items-center space-y-6",
     "text-gray-800",
-    "p-4",
-    "content-between",
-    "bg-clear-80"
+    "bg-clear-80",
+    "py-4 px-40"
   );
 
+  // TODO: format lines
   return (
     <div id="details" className={mainDivClasses}>
-      <div id="INFORMATION">
-        <p className="text-lg font-bold text-blue-900">INFORMATION</p>
-        <p>Launch date: {formatLaunchDate(launch_date_unix)}</p>
-        <p>Result: {launch_success ? "SUCCESS" : "FAILURE"}</p>
-        <p>Site name: {site_name_long}</p>
-        <a href={data.launch.links.wikipedia}>
-          <p>Wikipedia</p>
-        </a>
+      <div className="w-full h-auto mt-6 flex items-center justify-center">
+        <img src={mission_patch} alt="mission_patch" className="w-3/12" />
       </div>
-      <div id="ROCKET">
-        <p className="text-lg font-bold text-blue-900">ROCKET - {name}</p>
-        <p>{description}</p>
-        <a href={wikipedia}>
-          <p>Wikipedia</p>
+      <div>
+        <p className="text-lg font-bold text-blue-900 pt-6">INFORMATION</p>
+        <p>
+          <span className="font-bold text-gray-700">Launch Date:</span>{" "}
+          {formatLaunchDate(launch_date_unix)}
+        </p>
+        <p>
+          <span className="font-bold text-gray-700">Result:</span>{" "}
+          {launch_success ? "SUCCESS" : "FAILURE"}
+        </p>
+        <p>
+          <span className="font-bold text-gray-700">Launch Site:</span>{" "}
+          {site_name_long}
+        </p>
+        <a
+          href={data.launch.links.wikipedia}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <p className="text-blue-700 underline">Wikipedia Link</p>
         </a>
-        <p>Cost per launch: ${cost_per_launch}</p>
+        <p className="text-lg font-bold text-blue-900 pt-6">ROCKET - {name}</p>
+        <p className="py-2 font-bold text-blue-800">{description}</p>
         <p>
-          Height: {height.feet}ft/{height.meters}m
+          <span className="font-bold text-gray-700">Success Rate:</span>{" "}
+          {success_rate_pct}%
         </p>
-        <p>Boosters: {boosters}</p>
         <p>
-          Diameter: {diameter.feet}ft/{diameter.meters}m
+          <span className="font-bold text-gray-700">Cost per Launch:</span> $
+          {cost_per_launch}
         </p>
-        <p>Number of engines: {engines.number}</p>
-        <p>Thrust (vacuum): {engines.thrust_vacuum.kN}/kN</p>
-        <p>Stages: {stages}</p>
-        <p>Success rate: {success_rate_pct}%</p>
         <p>
-          Mass: {mass.lb}lbs/{mass.kg}kg
+          <span className="font-bold text-gray-700">Height:</span> {height.feet}
+          ft/{height.meters}m
         </p>
+        <p>
+          <span className="font-bold text-gray-700">Boosters:</span> {boosters}
+        </p>
+        <p>
+          <span className="font-bold text-gray-700">Diameter:</span>{" "}
+          {diameter.feet}ft/{diameter.meters}m
+        </p>
+        <p>
+          <span className="font-bold text-gray-700">Number of Engines:</span>{" "}
+          {engines.number}
+        </p>
+        <p>
+          <span className="font-bold text-gray-700">Thrust (vacuum):</span>{" "}
+          {engines.thrust_vacuum.kN}/kN
+        </p>
+        <p>
+          <span className="font-bold text-gray-700">Stages:</span> {stages}
+        </p>
+        <p>
+          <span className="font-bold text-gray-700">Mass:</span> {mass.lb}lbs/
+          {mass.kg}kg
+        </p>
+        <a href={wikipedia} target="_blank" rel="noopener noreferrer">
+          <p className="text-blue-700 underline">Wikipedia Link</p>
+        </a>
       </div>
     </div>
   );

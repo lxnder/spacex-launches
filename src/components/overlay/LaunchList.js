@@ -1,6 +1,5 @@
 import { useQuery } from "@apollo/react-hooks";
 import classNames from "classnames";
-import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { GET_LAUNCHES } from "../../lib/queries";
 import { useStore } from "../../stores/global";
@@ -51,6 +50,7 @@ const LaunchList = () => {
     }
   }, [data, loading, error]);
 
+  //TODO: clear up styles
   const mainDivClasses = classNames(
     "h-screen",
     "w-screen",
@@ -60,7 +60,7 @@ const LaunchList = () => {
     "top-0",
     "left-0",
     "z-20",
-    "bg-transp-95"
+    "bg-transp-90"
   );
 
   const containerClasses = classNames(
@@ -114,8 +114,8 @@ const LaunchList = () => {
       "ease-in-out",
       "font-questrial",
       {
-        "shadow-inner bg-subtle-5 font-bold text-blue-900": isActive,
-        "shadow-xl bg-clear-10 border border-subtle-5 text-gray-800 hover:bg-clear-50": !isActive,
+        "shadow-inner bg-gray-300 font-bold text-blue-900": isActive,
+        "shadow-xl bg-clear-95 border border-subtle-5 text-gray-800 hover:bg-blue-100": !isActive,
       }
     );
 
@@ -123,13 +123,7 @@ const LaunchList = () => {
   // TODO: No results
 
   return (
-    <motion.div
-      className={mainDivClasses}
-      // transition={{ duration: 0.8, ease: "easeInOut" }}
-      // initial={{ opacity: 0 }}
-      // animate={{ opacity: 1 }}
-      // exit={{ opacity: 0 }}
-    >
+    <div className={mainDivClasses}>
       <div className={containerClasses} onClick={e => disableOverlay(e)}>
         <div className={filterSelectionClasses}>
           <div
@@ -158,7 +152,7 @@ const LaunchList = () => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

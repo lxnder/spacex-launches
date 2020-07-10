@@ -213,6 +213,7 @@ module.exports = {
       "40": "10rem",
       "48": "12rem",
       "56": "14rem",
+      "60": "15rem",
       "64": "16rem",
     },
     backgroundColor: theme => theme("colors"),
@@ -232,6 +233,7 @@ module.exports = {
       auto: "auto",
       cover: "cover",
       contain: "contain",
+      stretch: "100% 100%",
     },
     borderColor: theme => ({
       ...theme("colors"),
@@ -425,6 +427,7 @@ module.exports = {
       "0": "0",
       full: "100%",
       screen: "100vh",
+      halfScreen: "50vh",
     },
     minWidth: {
       "0": "0",

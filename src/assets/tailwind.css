@@ -4,7 +4,7 @@
 
 /* width */
 ::-webkit-scrollbar {
-  width: 2px;
+  width: 3px;
 }
 
 /* Track */
@@ -30,6 +30,7 @@
     rgba(255, 255, 255, 1) 100%
   );
 }
+
 .gradient-bg-card {
   background: linear-gradient(
     20deg,
@@ -38,6 +39,7 @@
     rgba(255, 255, 255, 1) 100%
   );
 }
+
 .gradient-bg-orange {
   background: rgb(255, 232, 212);
   background: linear-gradient(

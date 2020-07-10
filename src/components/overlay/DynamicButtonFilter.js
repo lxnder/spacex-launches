@@ -36,16 +36,15 @@ const DynamicButtonFilter = () => {
     "w-full h-full",
     "flex flex-col justify-center",
     "px-4",
-    "focus:outline-none",
-    "hover:border-none"
+    "text-gray-700 hover:text-red-500",
+    "transition-color duration-200",
+    "focus:outline-none"
   );
 
   const btnTextClasses = classNames(
     "self-center",
     "font-questrial",
     "text-base xxs:text-xl sm:text-2xl",
-    "font-light",
-    "text-gray-700",
     "none",
     "sm:whitespace-no-wrap"
   );

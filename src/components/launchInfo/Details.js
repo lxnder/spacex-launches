@@ -29,11 +29,12 @@ const Details = ({ data }) => {
     "col-span-5",
     "flex flex-col items-center space-y-6",
     "text-gray-800",
-    "bg-clear-80",
+    "bg-clear-85",
     "py-4 px-40"
   );
 
   // TODO: format lines
+  // TODO: conditionals (image exists, launch is future...)
   return (
     <div id="details" className={mainDivClasses}>
       <div className="w-full h-auto mt-6 flex items-center justify-center">
@@ -41,13 +42,18 @@ const Details = ({ data }) => {
       </div>
       <div>
         <p className="text-lg font-bold text-blue-900 pt-6">INFORMATION</p>
+        <p
+          className={
+            "font-bold pt-2 " +
+            (launch_success ? "text-green-600" : "text-red-500")
+          }
+        >
+          <span className="font-bold text-gray-700">Result:</span>{" "}
+          {launch_success ? "SUCCESS" : "FAILURE"}
+        </p>
         <p>
           <span className="font-bold text-gray-700">Launch Date:</span>{" "}
           {formatLaunchDate(launch_date_unix)}
-        </p>
-        <p>
-          <span className="font-bold text-gray-700">Result:</span>{" "}
-          {launch_success ? "SUCCESS" : "FAILURE"}
         </p>
         <p>
           <span className="font-bold text-gray-700">Launch Site:</span>{" "}

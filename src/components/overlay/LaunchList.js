@@ -52,35 +52,26 @@ const LaunchList = () => {
 
   //TODO: clear up styles
   const mainDivClasses = classNames(
-    "h-screen",
-    "w-screen",
-    "fixed",
-    "flex",
-    "flex-col",
-    "top-0",
-    "left-0",
+    "fixed h-screen w-screen",
+    "top-0 left-0",
+    "flex flex-col",
     "z-20",
     "bg-transp-90"
   );
 
   const containerClasses = classNames(
-    "w-full",
-    "h-full",
-    "flex",
-    "flex-col",
-    "items-center",
-    "px-4 sm:px-12 md:px-12 lg:px-20 xl:px-20",
+    "w-full h-full",
+    "flex flex-col items-center",
     "space-y-4",
+    "px-4 sm:px-12 md:px-12 lg:px-20 xl:px-20",
     "mt-20 min-h-0",
-    "min-h-0",
     "pb-8",
     "pt-4"
   );
 
   const launchesClasses = classNames(
-    "w-full",
+    "w-full h-full",
     "max-w-screen-xl",
-    "h-full",
     "px-4 md:p-4",
     "overflow-y-auto",
     "shadow-2xl",
@@ -88,26 +79,21 @@ const LaunchList = () => {
   );
 
   const gridWrapperClasses = classNames(
-    "grid",
+    "grid col-gap-4",
     "xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1",
-    "col-gap-4",
     "h-auto"
   );
 
   const filterSelectionClasses = classNames(
-    "flex",
-    "justify-center",
     "w-full sm:w-3/4 md:w-1/2 lg:w-1/3",
+    "flex justify-center",
     "h-8 xxs:h-10"
   );
 
   const buttonClasses = isActive =>
     classNames(
-      "flex",
-      "items-center",
-      "justify-center",
-      "w-1/2",
-      "h-full",
+      "w-1/2 h-full",
+      "flex items-center justify-center",
       "cursor-pointer",
       "transition-all",
       "duration-200",

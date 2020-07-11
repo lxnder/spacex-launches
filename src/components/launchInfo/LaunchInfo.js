@@ -11,14 +11,15 @@ const LaunchInfo = () => {
   const { selectedLaunchID } = useStore();
   // eslint-disable-next-line
   const [rand, setRand] = useState(1);
-  const { loading, error, data } = useQuery(GET_LAUNCH(selectedLaunchID));
+  const { loading, error, data } = useQuery(GET_LAUNCH(selectedLaunchID || 87));
 
   useEffect(() => {
     setRand(1 + Math.floor(Math.random() * Math.floor(106)));
   }, []);
 
   const mainDivClasses = classNames(
-    "w-screen h-screen",
+    // ! Potential h-auto
+    "w-screen h-auto",
     "absolute top-0 left-0",
     "pt-20",
     "z-10",
@@ -40,7 +41,7 @@ const LaunchInfo = () => {
               className="w-full h-full"
               style={{ backdropFilter: "blur(8px)" }}
             >
-              <div className="w-full h-full grid grid-cols-12">
+              <div className="w-full h-auto lg:h-screen grid grid-cols-12">
                 <Details data={data} />
                 <Pictures pictures={data.launch.links.flickr_images} />
               </div>

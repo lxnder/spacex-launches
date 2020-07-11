@@ -4,10 +4,12 @@ import classNames from "classnames";
 const Pictures = ({ pictures }) => {
   const [index, setIndex] = useState(0);
 
-  const containerClasses = classNames("col-span-7");
+  const containerClasses = classNames(
+    "col-span-12 lg:col-span-8 xl:col-span-7"
+  );
 
   const blurBgClasses = classNames(
-    "w-full h-full",
+    "w-full h-screen lg:h-full",
     "bg-center bg-cover bg-no-repeat bg-subtle-60"
   );
 
@@ -66,7 +68,7 @@ const Pictures = ({ pictures }) => {
         <div className={blurBgClasses}>
           <div
             className={pictureClasses}
-            style={{ backgroundImage: `url(${pictures[index]}` }}
+            style={{ backgroundImage: `url(${pictures[index]})` }}
           >
             {pictures.length > 1 && (
               <>

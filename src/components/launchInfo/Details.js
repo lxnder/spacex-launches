@@ -1,6 +1,8 @@
 import classNames from "classnames";
 import moment from "moment";
 import React from "react";
+import TextLine from "./elements/TextLine";
+import Link from "./elements/Link";
 
 const Details = ({ data }) => {
   const { launch_date_unix, launch_success } = data.launch;
@@ -21,90 +23,76 @@ const Details = ({ data }) => {
   const { mission_patch } = data.launch.links;
 
   const formatLaunchDate = launchTimeUnix => {
-    return moment.unix(launchTimeUnix).format("MMMM Do YYYY");
+    return moment.unix(launchTimeUnix).format("MMMM Do YYYY, h:mm a");
   };
 
   const mainDivClasses = classNames(
-    "overflow-y-auto",
-    "col-span-5",
+    "col-span-12 lg:col-span-4 xl:col-span-5",
     "flex flex-col items-center space-y-6",
+    "overflow-y-auto",
     "text-gray-800",
     "bg-clear-85",
-    "py-4 px-40"
+    "px-8 xs:px-16 sm:px-24 md:px-32 lg:px-12 xxl:px-24",
+    "py-8"
   );
 
-  // TODO: format lines
+  const imgContainerClasses = classNames(
+    "w-full h-auto",
+    "flex items-center justify-center"
+  );
+
+  const imgClasses = classNames(
+    "h-24 xs:h-32 lg:h-24 xl:h-32",
+    "w-24 xs:w-32 lg:w-24 xl:w-32",
+    "bg-contain bg-center bg-no-repeat"
+  );
+
   // TODO: conditionals (image exists, launch is future...)
   return (
     <div id="details" className={mainDivClasses}>
-      <div className="w-full h-auto mt-6 flex items-center justify-center">
-        <img src={mission_patch} alt="mission_patch" className="w-3/12" />
+      <div className={imgContainerClasses}>
+        <div
+          className={imgClasses}
+          style={{ backgroundImage: `url(${mission_patch})` }}
+        />
       </div>
       <div>
-        <p className="text-lg font-bold text-blue-900 pt-6">INFORMATION</p>
-        <p
-          className={
-            "font-bold pt-2 " +
-            (launch_success ? "text-green-600" : "text-red-500")
-          }
-        >
-          <span className="font-bold text-gray-700">Result:</span>{" "}
-          {launch_success ? "SUCCESS" : "FAILURE"}
-        </p>
-        <p>
-          <span className="font-bold text-gray-700">Launch Date:</span>{" "}
-          {formatLaunchDate(launch_date_unix)}
-        </p>
-        <p>
-          <span className="font-bold text-gray-700">Launch Site:</span>{" "}
-          {site_name_long}
-        </p>
-        <a
-          href={data.launch.links.wikipedia}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <p className="text-blue-700 underline">Wikipedia Link</p>
-        </a>
-        <p className="text-lg font-bold text-blue-900 pt-6">ROCKET - {name}</p>
-        <p className="py-2 font-bold text-blue-800">{description}</p>
-        <p>
-          <span className="font-bold text-gray-700">Success Rate:</span>{" "}
-          {success_rate_pct}%
-        </p>
-        <p>
-          <span className="font-bold text-gray-700">Cost per Launch:</span> $
-          {cost_per_launch}
-        </p>
-        <p>
-          <span className="font-bold text-gray-700">Height:</span> {height.feet}
-          ft/{height.meters}m
-        </p>
-        <p>
-          <span className="font-bold text-gray-700">Boosters:</span> {boosters}
-        </p>
-        <p>
-          <span className="font-bold text-gray-700">Diameter:</span>{" "}
-          {diameter.feet}ft/{diameter.meters}m
-        </p>
-        <p>
-          <span className="font-bold text-gray-700">Number of Engines:</span>{" "}
-          {engines.number}
-        </p>
-        <p>
-          <span className="font-bold text-gray-700">Thrust (vacuum):</span>{" "}
-          {engines.thrust_vacuum.kN}/kN
-        </p>
-        <p>
-          <span className="font-bold text-gray-700">Stages:</span> {stages}
-        </p>
-        <p>
-          <span className="font-bold text-gray-700">Mass:</span> {mass.lb}lbs/
-          {mass.kg}kg
-        </p>
-        <a href={wikipedia} target="_blank" rel="noopener noreferrer">
-          <p className="text-blue-700 underline">Wikipedia Link</p>
-        </a>
+        <div id="INFO" className="pt-4">
+          <TextLine value="INFORMATION" isHeader={true} />
+          <TextLine
+            title={"Result"}
+            value={launch_success ? "SUCCESS" : "FAILURE"}
+          />
+          <TextLine
+            title={"Launch Date"}
+            value={formatLaunchDate(launch_date_unix)}
+          />
+          <TextLine title={"Launch Site"} value={site_name_long} />
+          <Link link={data.launch.links.wikipedia} text={"Wikipedia Link"} />
+        </div>
+        <div id="ROCKET" className="pt-6">
+          <TextLine value={"ROCKET - " + name} isHeader={true} />
+          <TextLine isDescription={true} value={description} />
+          <TextLine title={"Success Rate"} value={success_rate_pct + "%"} />
+          <TextLine title={"Cost per launch"} value={cost_per_launch} />
+          <TextLine
+            title={"Height"}
+            value={height.feet + "ft/" + height.meters + "m"}
+          />
+          <TextLine title={"Boosters"} value={boosters} />
+          <TextLine
+            title={"Diameter"}
+            value={diameter.feet + "ft/" + diameter.meters + "m"}
+          />
+          <TextLine title={"Number of Engines"} value={engines.number} />
+          <TextLine
+            title={"Thrust (vacuum)"}
+            value={engines.thrust_vacuum.kN + "kN"}
+          />
+          <TextLine title={"Stages"} value={stages} />
+          <TextLine title={"Mass"} value={mass.lb + "lbs/" + mass.kg + "kg"} />
+          <Link link={wikipedia} text={"Wikipedia Link"} />
+        </div>
       </div>
     </div>
   );

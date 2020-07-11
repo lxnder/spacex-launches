@@ -4,12 +4,14 @@ import classNames from "classnames";
 const Description = ({ description }) => {
   const descriptionClasses = exists =>
     classNames(
-      "h-40",
-      "border-b border-subtle-5",
+      "h-auto",
+      // "border-b border-subtle-5",
       "flex items-center justify-center",
       "max-w-screen-xxl",
-      "pb-12 pt-10 px-16",
-      "text-center text-lg",
+      "px-8 sm:px-16",
+      "pb-6 xxs:pb-12",
+      "pt-4 xxs:pt-10",
+      "text-center text-base xxs:text-base sm:text-lg",
       { "text-blue-800": exists },
       { "text-red-500": !exists }
     );

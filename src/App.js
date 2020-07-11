@@ -19,7 +19,7 @@ const App = () => {
     <>
       <DynamicButtonFilter />
       {overlayIsActive && <LaunchList />}
-      {!selectedLaunchID && <WelcomeScreen />}
+      {/* {!selectedLaunchID && <WelcomeScreen />} */}
       <LaunchInfo />
       <Background />
     </>

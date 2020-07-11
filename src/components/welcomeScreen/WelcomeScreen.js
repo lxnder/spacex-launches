@@ -9,18 +9,16 @@ const WelcomeScreen = () => {
     "flex",
     "flex-col",
     "items-center",
-    "pt-32",
-    "p-24",
+    "pt-20",
     "z-10"
   );
 
   const gridWrapperClasses = classNames(
     "w-full",
-    "h-full",
+    "h-full min-h-550",
+    "p-8",
     "grid",
-    "grid-cols-12",
-    "row-gap-12",
-    "grid-rows-6",
+    "grid-cols-12 grid-rows-6",
     "max-w-screen-xl"
   );
 
@@ -28,37 +26,38 @@ const WelcomeScreen = () => {
     classNames("h-full", "bg-center", "bg-contain", "bg-no-repeat", classes);
 
   const bottomDivClasses = classNames(
-    "col-span-12",
-    "row-span-1",
-    "flex",
-    "flex-col",
-    "items-center",
-    "space-y-4"
+    "col-span-12 row-span-1 pt-4",
+    "flex flex-col items-center justify-center"
   );
 
   return (
     <div className={mainDivClasses}>
       <div className={gridWrapperClasses}>
         <div
-          className={gridElementClasses("col-span-3 row-span-5")}
+          className={gridElementClasses(
+            "col-span-3 row-span-5 hidden lg:block"
+          )}
           style={{ backgroundImage: "url(assets/ships/left.png)" }}
         />
         <div
-          className={gridElementClasses("col-span-6 row-span-5")}
+          className={gridElementClasses("col-span-12 lg:col-span-6 row-span-5")}
           style={{ backgroundImage: "url(assets/ships/mid.png)" }}
         />
         <div
-          className={gridElementClasses("col-span-3 row-span-5")}
+          className={gridElementClasses(
+            "col-span-3 row-span-5 hidden lg:block"
+          )}
           style={{ backgroundImage: "url(assets/ships/right.png)" }}
         />
         <div className={bottomDivClasses}>
-          <img
-            className="w-6/12 h-auto"
-            src="assets/unofficial_logo_spaced.png"
-            alt="unofficial_logo"
+          <div
+            className="w-full h-12 mb-2 bg-contain bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `url(assets/unofficial_logo_spaced.png)`,
+            }}
           />
-          <div className="w-5/12 border-t border-gray-700 p-2">
-            <p className="text-center text-base xxs:text-xl sm:text-2xl font-questrial text-gray-700 whitespace-no-wrap">
+          <div className="w-5/12 border-t border-gray-700 pt-2 flex justify-center">
+            <p className="text-base xxs:text-xl sm:text-2xl font-questrial text-gray-700 whitespace-no-wrap">
               UNOFFICIAL LAUNCHES SITE
             </p>
           </div>

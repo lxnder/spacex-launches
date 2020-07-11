@@ -37,13 +37,13 @@ const Details = ({ data }) => {
   );
 
   const imgContainerClasses = classNames(
-    "w-full h-auto",
+    "w-full h-auto pt-4",
     "flex items-center justify-center"
   );
 
   const imgClasses = classNames(
-    "h-24 xs:h-32 lg:h-24 xl:h-32",
-    "w-24 xs:w-32 lg:w-24 xl:w-32",
+    "h-24 xs:h-32 lg:h-32 xl:h-32",
+    "w-24 xs:w-32 lg:w-32 xl:w-32",
     "bg-contain bg-center bg-no-repeat"
   );
 
@@ -57,7 +57,7 @@ const Details = ({ data }) => {
         />
       </div>
       <div>
-        <div id="INFO" className="pt-4">
+        <div id="INFO" className="pt-6">
           <TextLine value="INFORMATION" isHeader={true} />
           <TextLine
             title={"Result"}
@@ -70,7 +70,7 @@ const Details = ({ data }) => {
           <TextLine title={"Launch Site"} value={site_name_long} />
           <Link link={data.launch.links.wikipedia} text={"Wikipedia Link"} />
         </div>
-        <div id="ROCKET" className="pt-6">
+        <div id="ROCKET" className="pt-8">
           <TextLine value={"ROCKET - " + name} isHeader={true} />
           <TextLine isDescription={true} value={description} />
           <TextLine title={"Success Rate"} value={success_rate_pct + "%"} />

@@ -11,14 +11,13 @@ const LaunchInfo = () => {
   const { selectedLaunchID } = useStore();
   // eslint-disable-next-line
   const [rand, setRand] = useState(1);
-  const { loading, error, data } = useQuery(GET_LAUNCH(selectedLaunchID || 87));
+  const { loading, error, data } = useQuery(GET_LAUNCH(selectedLaunchID));
 
   useEffect(() => {
     setRand(1 + Math.floor(Math.random() * Math.floor(106)));
   }, []);
 
   const mainDivClasses = classNames(
-    // ! Potential h-auto
     "w-screen h-auto",
     "absolute top-0 left-0",
     "pt-20",

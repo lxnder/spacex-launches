@@ -26,6 +26,11 @@ const Details = ({ data }) => {
     return moment.unix(launchTimeUnix).format("MMMM Do YYYY, h:mm a");
   };
 
+  const launchIsFuture = launchTimeUnix => {
+    console.log(moment().unix() + " " + launchTimeUnix);
+    return moment().unix() < launchTimeUnix ? true : false;
+  };
+
   const mainDivClasses = classNames(
     "col-span-12 lg:col-span-4 xl:col-span-5",
     "flex flex-col items-center space-y-6",
@@ -65,14 +70,22 @@ const Details = ({ data }) => {
           <TextLine value="INFORMATION" isHeader={true} />
           <TextLine
             title={"Result"}
-            value={launch_success ? "SUCCESS" : "FAILURE"}
+            value={
+              launchIsFuture(launch_date_unix) || launch_success === null
+                ? "PENDING"
+                : launch_success === true
+                ? "SUCCESS"
+                : "FAILURE"
+            }
           />
           <TextLine
             title={"Launch Date"}
             value={formatLaunchDate(launch_date_unix)}
           />
           <TextLine title={"Launch Site"} value={site_name_long} />
-          <Link link={data.launch.links.wikipedia} text={"Wikipedia Link"} />
+          {data.launch.links.wikipedia && (
+            <Link link={data.launch.links.wikipedia} text={"Wikipedia Link"} />
+          )}
         </div>
         <div id="ROCKET" className="pt-8">
           <TextLine value={"ROCKET - " + name} isHeader={true} />
@@ -95,7 +108,7 @@ const Details = ({ data }) => {
           />
           <TextLine title={"Stages"} value={stages} />
           <TextLine title={"Mass"} value={mass.lb + "lbs/" + mass.kg + "kg"} />
-          <Link link={wikipedia} text={"Wikipedia Link"} />
+          {wikipedia && <Link link={wikipedia} text={"Wikipedia Link"} />}
         </div>
       </div>
     </div>

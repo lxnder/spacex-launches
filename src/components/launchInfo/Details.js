@@ -42,8 +42,8 @@ const Details = ({ data }) => {
   );
 
   const imgClasses = classNames(
-    "h-24 xs:h-32 lg:h-32 xl:h-32",
-    "w-24 xs:w-32 lg:w-32 xl:w-32",
+    "h-32 xs:h-32 lg:h-32 xl:h-32",
+    "w-32 xs:w-32 lg:w-32 xl:w-32",
     "bg-contain bg-center bg-no-repeat"
   );
 

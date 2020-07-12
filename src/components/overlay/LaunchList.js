@@ -16,10 +16,13 @@ const LaunchList = () => {
   const [launchesByDate, setLaunchesByDate] = useState([]);
 
   const launchPassesFilter = name => {
-    if (launchFilterName === "") {
+    if (
+      launchFilterName === "" ||
+      name.toLowerCase().match(launchFilterName.toLowerCase()) !== null
+    ) {
       return true;
     } else {
-      return name.toLowerCase().match(launchFilterName.toLowerCase()) !== null;
+      return false;
     }
   };
 
@@ -50,7 +53,6 @@ const LaunchList = () => {
     }
   }, [data, loading, error]);
 
-  //TODO: clear up styles
   const mainDivClasses = classNames(
     "fixed h-screen w-screen",
     "top-0 left-0",
@@ -106,7 +108,6 @@ const LaunchList = () => {
     );
 
   // TODO: Loading and error status
-  // TODO: No results
 
   return (
     <div className={mainDivClasses}>
@@ -126,16 +127,22 @@ const LaunchList = () => {
           </div>
         </div>
         <div className={launchesClasses}>
-          <div className={gridWrapperClasses}>
-            {data &&
-              getSelectedLaunches().map(launch => (
-                <React.Fragment key={launch.id}>
-                  {launchPassesFilter(launch.mission_name) && (
-                    <LaunchCard launch={launch} />
-                  )}
-                </React.Fragment>
-              ))}
-          </div>
+          {loading ? (
+            <div className="w-full h-full flex justify-center items-center">
+              <p className="text-xl text-gray-500">Loading ...</p>
+            </div>
+          ) : (
+            <div className={gridWrapperClasses}>
+              {data &&
+                getSelectedLaunches().map(launch => (
+                  <React.Fragment key={launch.id}>
+                    {launchPassesFilter(launch.mission_name) && (
+                      <LaunchCard launch={launch} />
+                    )}
+                  </React.Fragment>
+                ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

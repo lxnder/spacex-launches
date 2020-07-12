@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/react-hooks";
-import React from "react";
+import React, { useEffect } from "react";
 import Background from "./components/Background";
 import LaunchInfo from "./components/launchInfo/LaunchInfo";
 import DynamicButtonFilter from "./components/overlay/DynamicButtonFilter";

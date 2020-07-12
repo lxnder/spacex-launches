@@ -43,15 +43,19 @@ const LaunchCard = ({ launch }) => {
   );
 
   const infoClasses = classNames(
-    "flex flex-col justify-center items-center col-span-7"
+    "col-span-7",
+    "flex flex-col justify-center items-center"
   );
 
-  const imgClasses = classNames("flex items-center justify-center col-span-5");
+  const imgClasses = classNames(
+    "col-span-5",
+    "flex items-center justify-center"
+  );
 
-  const textClasses = attributes =>
-    classNames("text-center", "text-sm", attributes);
+  const patchClasses = classNames("h-16 xxs:h-24");
 
-  // TODO: clean up styles
+  const textClasses = classes => classNames("text-center", "text-sm", classes);
+
   return (
     <div
       className={cardClasses}
@@ -85,13 +89,13 @@ const LaunchCard = ({ launch }) => {
           <img
             src={launch.links.mission_patch_small}
             alt="small_patch"
-            className="h-16 xxs:h-24"
+            className={patchClasses}
           />
         ) : (
           <img
             src="assets/no_patch_text.png"
             alt="no_patch"
-            className="h-16 xxs:h-24"
+            className={patchClasses}
           ></img>
         )}
       </div>

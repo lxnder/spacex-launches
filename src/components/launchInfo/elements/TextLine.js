@@ -32,7 +32,7 @@ const TextLine = ({
                 : "text-gray-900"
             }
           >
-            {value.toString()}
+            {value && value.toString()}
           </span>
         </>
       )}

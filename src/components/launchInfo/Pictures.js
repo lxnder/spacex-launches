@@ -57,7 +57,6 @@ const Pictures = ({ pictures }) => {
     }
   };
 
-  // TODO: No images found
   return (
     <div className={containerClasses}>
       {pictures.length < 1 ? (

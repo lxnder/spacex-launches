@@ -27,7 +27,6 @@ const Details = ({ data }) => {
   };
 
   const launchIsFuture = launchTimeUnix => {
-    console.log(moment().unix() + " " + launchTimeUnix);
     return moment().unix() < launchTimeUnix ? true : false;
   };
 
@@ -52,7 +51,6 @@ const Details = ({ data }) => {
     "bg-contain bg-center bg-no-repeat"
   );
 
-  // TODO: conditionals (image exists, launch is future...)
   return (
     <div id="details" className={mainDivClasses}>
       <div className={imgContainerClasses}>

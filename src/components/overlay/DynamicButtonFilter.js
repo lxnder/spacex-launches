@@ -15,14 +15,12 @@ const DynamicButtonFilter = () => {
     setLaunchFilterName(e.target.value);
   };
 
-  // ! REMOVED FIXED TOP-0
   const wrapperClasses = classNames(
     "absolute w-full h-20",
     "flex flex-col justify-end items-center",
     "z-50"
   );
 
-  // ! ADDED Z-50
   const dynamicDivClasses = classNames(
     { "w-full h-16": overlayIsActive },
     {
@@ -44,7 +42,7 @@ const DynamicButtonFilter = () => {
   const btnTextClasses = classNames(
     "self-center",
     "font-questrial",
-    "text-base xxs:text-xl sm:text-2xl",
+    "text-lg xxs:text-xl sm:text-2xl",
     "none",
     "sm:whitespace-no-wrap"
   );

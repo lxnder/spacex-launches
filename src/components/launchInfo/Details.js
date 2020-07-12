@@ -31,7 +31,7 @@ const Details = ({ data }) => {
     "flex flex-col items-center space-y-6",
     "overflow-y-auto",
     "text-gray-800",
-    "bg-clear-85",
+    "bg-clear-80",
     "px-8 xs:px-16 sm:px-24 md:px-32 lg:px-12 xxl:px-24",
     "py-8"
   );
@@ -53,7 +53,11 @@ const Details = ({ data }) => {
       <div className={imgContainerClasses}>
         <div
           className={imgClasses}
-          style={{ backgroundImage: `url(${mission_patch})` }}
+          style={
+            mission_patch
+              ? { backgroundImage: `url(${mission_patch})` }
+              : { backgroundImage: `url(assets/no_patch_hd.png)` }
+          }
         />
       </div>
       <div>

@@ -111,7 +111,7 @@ const LaunchList = () => {
   return (
     <motion.div
       className={mainDivClasses}
-      key={Math.random()}
+      key={"launch_list"}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.75, ease: "easeOut" }}

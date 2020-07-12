@@ -9,7 +9,7 @@ import Pictures from "./Pictures";
 import { motion } from "framer-motion";
 
 const LaunchInfo = () => {
-  const { selectedLaunchID } = useStore();
+  const { selectedLaunchID, overlayIsActive } = useStore();
   // eslint-disable-next-line
   const [rand, setRand] = useState(1);
   const { loading, error, data } = useQuery(GET_LAUNCH(selectedLaunchID));
@@ -29,10 +29,14 @@ const LaunchInfo = () => {
   return (
     <motion.div
       className={mainDivClasses}
-      key={Math.random()}
+      key={"launch_info"}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ delay: 0.5, duration: 1.5, ease: "easeOut" }}
+      transition={{
+        delay: 1,
+        duration: 1.5,
+        ease: "easeOut",
+      }}
       exit={{ opacity: 0 }}
     >
       {!loading && !error && (

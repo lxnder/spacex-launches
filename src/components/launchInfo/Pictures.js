@@ -62,7 +62,11 @@ const Pictures = ({ pictures }) => {
     <div className={containerClasses}>
       {pictures.length < 1 ? (
         <div className="flex flex-col items-center justify-center w-full h-full">
-          <p className="text-lg text-red-500">-NO IMAGES FOUND-</p>
+          <div className="h-32 w-full bg-subtle-50 flex items-center justify-center">
+            <p className="text-2xl text-red-500 text-center">
+              -NO IMAGES FOUND-
+            </p>
+          </div>
         </div>
       ) : (
         <div className={blurBgClasses}>

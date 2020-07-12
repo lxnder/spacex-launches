@@ -32,9 +32,15 @@ const LaunchInfo = () => {
           <Description description={data.launch.details} />
           <div
             className="w-full h-full bg-cover bg-no-repeat bg-center"
-            style={{
-              backgroundImage: `url(${data.launch.links.flickr_images[0]})`,
-            }}
+            style={
+              data.launch.links.flickr_images.length > 0
+                ? {
+                    backgroundImage: `url(${data.launch.links.flickr_images[0]})`,
+                  }
+                : {
+                    backgroundImage: `url(assets/no_image.png)`,
+                  }
+            }
           >
             <div
               className="w-full h-full"

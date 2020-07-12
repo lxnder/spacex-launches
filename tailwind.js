@@ -434,6 +434,8 @@ module.exports = {
       screen: "100vh",
       halfScreen: "50vh",
       "550": "550px",
+      "1.25rem": "1.25rem",
+      "12": "3rem",
     },
     minWidth: {
       "0": "0",

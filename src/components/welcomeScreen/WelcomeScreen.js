@@ -15,7 +15,8 @@ const WelcomeScreen = () => {
 
   const gridWrapperClasses = classNames(
     "w-full",
-    "h-full min-h-550",
+    "h-full",
+    // "min-h-550",
     "p-8",
     "grid",
     "grid-cols-12 grid-rows-6",
@@ -51,7 +52,7 @@ const WelcomeScreen = () => {
         />
         <div className={bottomDivClasses}>
           <div
-            className="w-full h-12 mb-2 bg-contain bg-center bg-no-repeat"
+            className="w-full h-12 min-h-1.25rem my-2 bg-contain bg-center bg-no-repeat"
             style={{
               backgroundImage: `url(assets/unofficial_logo_spaced.png)`,
             }}

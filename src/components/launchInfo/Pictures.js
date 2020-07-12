@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import classNames from "classnames";
+import { motion } from "framer-motion";
 
 const Pictures = ({ pictures }) => {
   const [index, setIndex] = useState(0);
@@ -75,18 +76,26 @@ const Pictures = ({ pictures }) => {
           >
             {pictures.length > 1 && (
               <>
-                <div
+                <motion.div
+                  whileHover={{
+                    scale: 1.1,
+                  }}
+                  whileTap={{ scale: 0.9 }}
                   className={arrowContainerClasses("left")}
                   onClick={previousPicture}
                 >
                   <div className={arrowClasses("left")} />
-                </div>
-                <div
+                </motion.div>
+                <motion.div
+                  whileHover={{
+                    scale: 1.1,
+                  }}
+                  whileTap={{ scale: 0.9 }}
                   className={arrowContainerClasses("right")}
                   onClick={nextPicture}
                 >
                   <div className={arrowClasses("right")} />
-                </div>
+                </motion.div>
               </>
             )}
           </div>

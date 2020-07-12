@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import { motion } from "framer-motion";
 
 const WelcomeScreen = () => {
   const mainDivClasses = classNames(
@@ -33,14 +34,22 @@ const WelcomeScreen = () => {
 
   return (
     <div className={mainDivClasses}>
-      <div className={gridWrapperClasses}>
+      <motion.div
+        className={gridWrapperClasses}
+        initial={{ y: "3rem", opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.5, duration: 1.5, ease: "easeOut" }}
+      >
         <div
           className={gridElementClasses(
             "col-span-3 row-span-5 hidden lg:block"
           )}
           style={{ backgroundImage: "url(assets/ships/left.png)" }}
         />
-        <div
+        <motion.div
+          initial={{ y: "-1.5rem", opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.5, duration: 1.5, ease: "easeOut" }}
           className={gridElementClasses("col-span-12 lg:col-span-6 row-span-5")}
           style={{ backgroundImage: "url(assets/ships/mid.png)" }}
         />
@@ -50,7 +59,12 @@ const WelcomeScreen = () => {
           )}
           style={{ backgroundImage: "url(assets/ships/right.png)" }}
         />
-        <div className={bottomDivClasses}>
+        <motion.div
+          className={bottomDivClasses}
+          initial={{ y: "1.5rem", opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 2, duration: 1.5, ease: "easeInOut" }}
+        >
           <div
             className="w-full h-12 min-h-1.25rem my-2 bg-contain bg-center bg-no-repeat"
             style={{
@@ -62,8 +76,8 @@ const WelcomeScreen = () => {
               UNOFFICIAL LAUNCHES SITE
             </p>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };

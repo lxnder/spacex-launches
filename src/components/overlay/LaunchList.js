@@ -107,8 +107,6 @@ const LaunchList = () => {
       }
     );
 
-  // TODO: Loading and error status
-
   return (
     <div className={mainDivClasses}>
       <div className={containerClasses} onClick={e => disableOverlay(e)}>

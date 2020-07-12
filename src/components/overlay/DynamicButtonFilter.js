@@ -1,6 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import { useStore } from "../../stores/global";
+import { motion } from "framer-motion";
 
 const DynamicButtonFilter = () => {
   const {
@@ -60,7 +61,12 @@ const DynamicButtonFilter = () => {
 
   return (
     <div className={wrapperClasses}>
-      <div className={dynamicDivClasses}>
+      <motion.div
+        className={dynamicDivClasses}
+        initial={{ y: "-1.5rem", opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 2, duration: 1.5, ease: "easeInOut" }}
+      >
         {!overlayIsActive ? (
           <button
             className={btnClasses}
@@ -80,7 +86,7 @@ const DynamicButtonFilter = () => {
             spellCheck="false"
           />
         )}
-      </div>
+      </motion.div>
     </div>
   );
 };

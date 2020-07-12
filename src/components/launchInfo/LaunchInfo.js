@@ -6,6 +6,7 @@ import { useStore } from "../../stores/global";
 import Description from "./Description";
 import Details from "./Details";
 import Pictures from "./Pictures";
+import { motion } from "framer-motion";
 
 const LaunchInfo = () => {
   const { selectedLaunchID } = useStore();
@@ -26,7 +27,14 @@ const LaunchInfo = () => {
   );
 
   return (
-    <div className={mainDivClasses}>
+    <motion.div
+      className={mainDivClasses}
+      key={Math.random()}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.5, duration: 1.5, ease: "easeOut" }}
+      exit={{ opacity: 0 }}
+    >
       {!loading && !error && (
         <div className="w-full h-full flex flex-col items-center overflow-y-auto">
           <Description description={data.launch.details} />
@@ -54,7 +62,7 @@ const LaunchInfo = () => {
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { GET_LAUNCHES } from "../../lib/queries";
 import { useStore } from "../../stores/global";
 import LaunchCard from "./LaunchCard";
+import { motion } from "framer-motion";
 
 const LaunchList = () => {
   const { loading, error, data } = useQuery(GET_LAUNCHES);
@@ -108,7 +109,14 @@ const LaunchList = () => {
     );
 
   return (
-    <div className={mainDivClasses}>
+    <motion.div
+      className={mainDivClasses}
+      key={Math.random()}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.75, ease: "easeOut" }}
+      exit={{ opacity: 0 }}
+    >
       <div className={containerClasses} onClick={e => disableOverlay(e)}>
         <div className={filterSelectionClasses}>
           <div
@@ -143,7 +151,7 @@ const LaunchList = () => {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

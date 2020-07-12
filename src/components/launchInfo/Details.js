@@ -20,7 +20,7 @@ const Details = ({ data }) => {
     success_rate_pct,
     mass,
   } = data.launch.rocket.rocket;
-  const { mission_patch } = data.launch.links;
+  const { mission_patch_small } = data.launch.links;
 
   const formatLaunchDate = launchTimeUnix => {
     return moment.unix(launchTimeUnix).format("MMMM Do YYYY, h:mm a");
@@ -57,8 +57,8 @@ const Details = ({ data }) => {
         <div
           className={imgClasses}
           style={
-            mission_patch
-              ? { backgroundImage: `url(${mission_patch})` }
+            mission_patch_small
+              ? { backgroundImage: `url(${mission_patch_small})` }
               : { backgroundImage: `url(assets/no_patch_hd.png)` }
           }
         />

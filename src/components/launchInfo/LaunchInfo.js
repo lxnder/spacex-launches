@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/react-hooks";
 import classNames from "classnames";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { GET_LAUNCH } from "../../lib/queries";
 import { useStore } from "../../stores/global";
 import Description from "./Description";
@@ -9,14 +9,8 @@ import Pictures from "./Pictures";
 import { motion } from "framer-motion";
 
 const LaunchInfo = () => {
-  const { selectedLaunchID, overlayIsActive } = useStore();
-  // eslint-disable-next-line
-  const [rand, setRand] = useState(1);
+  const { selectedLaunchID } = useStore();
   const { loading, error, data } = useQuery(GET_LAUNCH(selectedLaunchID));
-
-  useEffect(() => {
-    setRand(1 + Math.floor(Math.random() * Math.floor(106)));
-  }, []);
 
   const mainDivClasses = classNames(
     "w-screen h-auto",

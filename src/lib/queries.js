@@ -13,7 +13,7 @@ export const GET_LAUNCH = id => gql`
         flickr_images
         video_link
         wikipedia
-        mission_patch
+        mission_patch_small
       }
       rocket {
         rocket {

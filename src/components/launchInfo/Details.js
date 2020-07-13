@@ -89,7 +89,7 @@ const Details = ({ data }) => {
           <TextLine value={"ROCKET - " + name} isHeader={true} />
           <TextLine isDescription={true} value={description} />
           <TextLine title={"Success Rate"} value={success_rate_pct + "%"} />
-          <TextLine title={"Cost per launch"} value={cost_per_launch} />
+          <TextLine title={"Cost per launch"} value={"$" + cost_per_launch} />
           <TextLine
             title={"Height"}
             value={height.feet + "ft/" + height.meters + "m"}

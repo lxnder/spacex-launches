@@ -11,7 +11,7 @@ const Pictures = ({ pictures }) => {
 
   const blurBgClasses = classNames(
     "w-full h-screen lg:h-full",
-    "bg-center bg-cover bg-no-repeat bg-subtle-60"
+    "bg-center bg-cover bg-no-repeat bg-subtle-75"
   );
 
   const pictureClasses = classNames(

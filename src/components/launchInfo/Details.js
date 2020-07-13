@@ -35,7 +35,7 @@ const Details = ({ data }) => {
     "flex flex-col items-center space-y-6",
     "overflow-y-auto",
     "text-gray-800",
-    "bg-clear-80",
+    "bg-clear-95",
     "px-8 xs:px-16 sm:px-24 md:px-32 lg:px-12 xxl:px-24",
     "py-8"
   );
@@ -46,8 +46,7 @@ const Details = ({ data }) => {
   );
 
   const imgClasses = classNames(
-    "h-32 xs:h-32 lg:h-32 xl:h-32",
-    "w-32 xs:w-32 lg:w-32 xl:w-32",
+    "h-32 w-32 xxl:h-40 xxl:w-40",
     "bg-contain bg-center bg-no-repeat"
   );
 

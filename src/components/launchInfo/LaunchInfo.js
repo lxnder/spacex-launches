@@ -49,7 +49,7 @@ const LaunchInfo = () => {
           >
             <div
               className="w-full h-full"
-              style={{ backdropFilter: "blur(8px)" }}
+              // style={{ backdropFilter: "blur(8px)" }}
             >
               <div className="w-full h-auto lg:h-screen grid grid-cols-12">
                 <Details data={data} />

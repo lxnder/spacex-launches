@@ -17,10 +17,8 @@ const App = () => {
   return (
     <>
       <DynamicButtonFilter />
-      <AnimatePresence>
-        {overlayIsActive && <LaunchList key={1} />}
-        {selectedLaunchID && !overlayIsActive && <LaunchInfo key={2} />}
-      </AnimatePresence>
+      <AnimatePresence>{overlayIsActive && <LaunchList />}</AnimatePresence>
+      {selectedLaunchID && !overlayIsActive && <LaunchInfo />}
       {!selectedLaunchID && <WelcomeScreen />}
       <Background />
     </>

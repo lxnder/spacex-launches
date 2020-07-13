@@ -28,10 +28,9 @@ const LaunchInfo = () => {
       animate={{ opacity: 1 }}
       transition={{
         delay: 1,
-        duration: 1.5,
+        duration: 1,
         ease: "easeOut",
       }}
-      exit={{ opacity: 0 }}
     >
       {!loading && !error && (
         <div className="w-full h-full flex flex-col items-center overflow-y-auto">
